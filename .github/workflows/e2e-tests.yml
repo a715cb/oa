@@ -1,0 +1,128 @@
+# GitHub Actions E2E 测试工作流
+name: E2E Tests
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+  workflow_dispatch:
+
+jobs:
+  e2e-tests:
+    name: E2E Tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    strategy:
+      matrix:
+        node-version: [18, 20]
+      fail-fast: false
+
+    steps:
+      # 检出代码
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # 设置 Node.js 环境
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+          cache-dependency-path: frontend/package-lock.json
+
+      # 安装前端依赖
+      - name: Install frontend dependencies
+        run: |
+          cd frontend
+          npm ci
+
+      # 安装 Playwright 浏览器（带缓存检查）
+      - name: Check Playwright browser cache
+        id: playwright-cache
+        run: |
+          cd frontend
+          if [ -d "$HOME/.cache/ms-playwright/chromium-*" ]; then
+            echo "cache-hit=true" >> $GITHUB_OUTPUT
+            echo "✓ Chromium browser cache found"
+          else
+            echo "cache-hit=false" >> $GITHUB_OUTPUT
+            echo "⚠ Chromium browser not cached, will install"
+          fi
+
+      - name: Install Playwright browsers
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
+        run: |
+          cd frontend
+          npx playwright install --with-deps chromium
+        env:
+          PLAYWRIGHT_BROWSERS_PATH: $HOME/.cache/ms-playwright
+
+      # 启动后端服务
+      - name: Start backend server
+        run: |
+          cd backend
+          # 根据实际项目调整启动命令
+          php think run &
+
+      # 等待后端服务就绪
+      - name: Wait for backend
+        run: |
+          for i in {1..30}; do
+            if curl -s http://127.0.0.1:8000 > /dev/null; then
+              echo "Backend is ready"
+              exit 0
+            fi
+            echo "Waiting for backend... ($i/30)"
+            sleep 2
+          done
+          echo "Backend failed to start"
+          exit 1
+
+      # 启动前端服务
+      - name: Start frontend server
+        run: |
+          cd frontend
+          npm run dev &
+
+      # 等待前端服务就绪
+      - name: Wait for frontend
+        run: |
+          for i in {1..30}; do
+            if curl -s http://localhost:5173 > /dev/null; then
+              echo "Frontend is ready"
+              exit 0
+            fi
+            echo "Waiting for frontend... ($i/30)"
+            sleep 2
+          done
+          echo "Frontend failed to start"
+          exit 1
+
+      # 运行 E2E 测试
+      - name: Run E2E tests
+        run: |
+          cd frontend
+          npm run test:e2e:ci
+        env:
+          CI: 'true'
+          BASE_URL: 'http://localhost:5173'
+
+      # 上传测试报告
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report-node${{ matrix.node-version }}
+          path: |
+            frontend/playwright-report/
+            frontend/test-results/
+          retention-days: 30
+
+      # 发布 JUnit 报告
+      - name: Publish JUnit report
+        if: always()
+        uses: mikepenz/action-junit-report@v3
+        with:
+          report_paths: 'frontend/test-results/e2e-results.xml'

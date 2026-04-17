@@ -13,7 +13,14 @@
     "type-check": "vue-tsc --noEmit",
     "test:e2e": "powershell -ExecutionPolicy Bypass -File scripts/run-tests.ps1",
     "test:e2e:ui": "powershell -ExecutionPolicy Bypass -File scripts/run-tests.ps1 --UI",
-    "test:e2e:report": "powershell -ExecutionPolicy Bypass -File scripts/run-tests.ps1 --Report"
+    "test:e2e:report": "powershell -ExecutionPolicy Bypass -File scripts/run-tests.ps1 --Report",
+    "test:e2e:auth": "powershell -ExecutionPolicy Bypass -File scripts/run-tests.ps1 --Auth",
+    "test:e2e:system": "powershell -ExecutionPolicy Bypass -File scripts/run-tests.ps1 --System",
+    "test:e2e:perf": "powershell -ExecutionPolicy Bypass -File scripts/run-tests.ps1 --Performance",
+    "test:e2e:headless": "powershell -ExecutionPolicy Bypass -File scripts/run-tests.ps1 --Headless",
+    "test:e2e:mobile": "powershell -ExecutionPolicy Bypass -File scripts/run-tests.ps1 --Project mobile-chrome",
+    "test:e2e:ci": "powershell -ExecutionPolicy Bypass -File scripts/run-tests.ps1 --Headless --Project chromium --SkipBrowserCheck",
+    "test:e2e:install-browser": "scripts\\check-playwright.bat"
   },
   "dependencies": {
     "@ant-design/icons-vue": "^6.1.0",
