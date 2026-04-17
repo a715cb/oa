@@ -1,0 +1,29 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- 科技风格盾牌 - 数字化 -->
+  <defs>
+    <linearGradient id="shieldGrad4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E40AF"/>
+      <stop offset="50%" stop-color="#4F46E5"/>
+      <stop offset="100%" stop-color="#7C3AED"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- 盾牌主体 -->
+  <path d="M100 12 L168 38 L168 95 C168 138 100 188 100 188 C100 188 32 138 32 95 L32 38 Z" 
+        fill="url(#shieldGrad4)"/>
+  
+  <!-- 网格装饰 -->
+  <line x1="60" y1="50" x2="140" y2="50" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+  <line x1="60" y1="75" x2="140" y2="75" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+  <line x1="60" y1="100" x2="140" y2="100" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+  <line x1="80" y1="40" x2="80" y2="140" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+  <line x1="100" y1="40" x2="100" y2="150" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+  <line x1="120" y1="40" x2="120" y2="140" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+  
+  <!-- OA 字母 -->
+  <text x="100" y="115" font-family="Arial, sans-serif" font-size="50" font-weight="bold" 
+        fill="#FFFFFF" text-anchor="middle" letter-spacing="-2">OA</text>
+  
+  <!-- 顶部装饰 -->
+  <circle cx="100" cy="28" r="5" fill="#FCD34D"/>
+</svg>

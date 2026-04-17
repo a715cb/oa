@@ -1,0 +1,47 @@
+# 依赖
+node_modules/
+vendor/
+composer.lock
+
+# 环境配置
+.env
+.env.local
+.env.*.local
+
+# IDE配置
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# 系统文件
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 日志文件
+*.log
+logs/
+storage/logs/
+
+# 缓存
+.cache/
+__pycache__/
+*.pyc
+
+# 构建输出
+dist/
+build/
+
+# 数据库导出文件
+*.sql.gz
+*.sql.bz2
+
+# 临时文件
+tmp/
+temp/
+*.tmp
+
+# Trae配置（如果需要提交则删除此行）
+.trae/

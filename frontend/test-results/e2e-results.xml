@@ -1,0 +1,2438 @@
+<testsuites id="" name="" tests="34" failures="8" skipped="0" errors="18" time="889.635715">
+<testsuite name="auth-boundary.spec.ts" timestamp="2026-04-17T00:16:42.358Z" hostname="chromium" tests="10" failures="2" skipped="0" time="158.504" errors="4">
+<testcase name="认证流程与边界条件测试 › 空用户名和密码登录应被拒绝" classname="auth-boundary.spec.ts" time="18.937">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|auth-boundary-认证流程与边界条件测试-空用户名和密码登录应被拒绝-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|auth-boundary-认证流程与边界条件测试-空用户名和密码登录应被拒绝-chromium\video.webm]]
+
+[[ATTACHMENT|auth-boundary-认证流程与边界条件测试-空用户名和密码登录应被拒绝-chromium\error-context.md]]
+
+[[ATTACHMENT|auth-boundary-认证流程与边界条件测试-空用户名和密码登录应被拒绝-chromium\trace.zip]]
+
+[[ATTACHMENT|auth-boundary-认证流程与边界条件测试-空用户名和密码登录应被拒绝-chromium-retry1\test-failed-1.png]]
+
+[[ATTACHMENT|auth-boundary-认证流程与边界条件测试-空用户名和密码登录应被拒绝-chromium-retry1\video.webm]]
+
+[[ATTACHMENT|auth-boundary-认证流程与边界条件测试-空用户名和密码登录应被拒绝-chromium-retry1\error-context.md]]
+
+[[ATTACHMENT|auth-boundary-认证流程与边界条件测试-空用户名和密码登录应被拒绝-chromium-retry1\trace.zip]]
+]]>
+</system-out>
+<error message="page.waitForSelector: Timeout 5000ms exceeded." type="TimeoutError">
+<![CDATA[  [chromium] › auth-boundary.spec.ts:4:3 › 认证流程与边界条件测试 › 空用户名和密码登录应被拒绝 ─────────────────────────────
+
+    TimeoutError: page.waitForSelector: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for locator('text=用户名或密码不能为空') to be visible
+
+
+       6 |     await page.click('button[type="submit"]');
+       7 |     
+    >  8 |     await page.waitForSelector('text=用户名或密码不能为空', { timeout: 5000 });
+         |                ^
+       9 |     await expect(page.locator('text=用户名或密码不能为空')).toBeVisible();
+      10 |   });
+      11 |
+        at D:\AI\OA\frontend\e2e\auth-boundary.spec.ts:8:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\auth-boundary-认证流程与边界条件测试-空用户名和密码登录应被拒绝-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\test-results\auth-boundary-认证流程与边界条件测试-空用户名和密码登录应被拒绝-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\auth-boundary-认证流程与边界条件测试-空用户名和密码登录应被拒绝-chromium\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\test-results\auth-boundary-认证流程与边界条件测试-空用户名和密码登录应被拒绝-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\test-results\auth-boundary-认证流程与边界条件测试-空用户名和密码登录应被拒绝-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    TimeoutError: page.waitForSelector: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for locator('text=用户名或密码不能为空') to be visible
+
+
+       6 |     await page.click('button[type="submit"]');
+       7 |     
+    >  8 |     await page.waitForSelector('text=用户名或密码不能为空', { timeout: 5000 });
+         |                ^
+       9 |     await expect(page.locator('text=用户名或密码不能为空')).toBeVisible();
+      10 |   });
+      11 |
+        at D:\AI\OA\frontend\e2e\auth-boundary.spec.ts:8:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\auth-boundary-认证流程与边界条件测试-空用户名和密码登录应被拒绝-chromium-retry1\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\test-results\auth-boundary-认证流程与边界条件测试-空用户名和密码登录应被拒绝-chromium-retry1\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\auth-boundary-认证流程与边界条件测试-空用户名和密码登录应被拒绝-chromium-retry1\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\test-results\auth-boundary-认证流程与边界条件测试-空用户名和密码登录应被拒绝-chromium-retry1\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\test-results\auth-boundary-认证流程与边界条件测试-空用户名和密码登录应被拒绝-chromium-retry1\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</error>
+</testcase>
+<testcase name="认证流程与边界条件测试 › 仅输入用户名应被拒绝" classname="auth-boundary.spec.ts" time="18.366">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|auth-boundary-认证流程与边界条件测试-仅输入用户名应被拒绝-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|auth-boundary-认证流程与边界条件测试-仅输入用户名应被拒绝-chromium\video.webm]]
+
+[[ATTACHMENT|auth-boundary-认证流程与边界条件测试-仅输入用户名应被拒绝-chromium\error-context.md]]
+
+[[ATTACHMENT|auth-boundary-认证流程与边界条件测试-仅输入用户名应被拒绝-chromium\trace.zip]]
+
+[[ATTACHMENT|auth-boundary-认证流程与边界条件测试-仅输入用户名应被拒绝-chromium-retry1\test-failed-1.png]]
+
+[[ATTACHMENT|auth-boundary-认证流程与边界条件测试-仅输入用户名应被拒绝-chromium-retry1\video.webm]]
+
+[[ATTACHMENT|auth-boundary-认证流程与边界条件测试-仅输入用户名应被拒绝-chromium-retry1\error-context.md]]
+
+[[ATTACHMENT|auth-boundary-认证流程与边界条件测试-仅输入用户名应被拒绝-chromium-retry1\trace.zip]]
+]]>
+</system-out>
+<error message="page.waitForSelector: Timeout 5000ms exceeded." type="TimeoutError">
+<![CDATA[  [chromium] › auth-boundary.spec.ts:12:3 › 认证流程与边界条件测试 › 仅输入用户名应被拒绝 ───────────────────────────────
+
+    TimeoutError: page.waitForSelector: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for locator('text=用户名或密码不能为空') to be visible
+
+
+      15 |     await page.click('button[type="submit"]');
+      16 |     
+    > 17 |     await page.waitForSelector('text=用户名或密码不能为空', { timeout: 5000 });
+         |                ^
+      18 |   });
+      19 |
+      20 |   test('仅输入密码应被拒绝', async ({ page }) => {
+        at D:\AI\OA\frontend\e2e\auth-boundary.spec.ts:17:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\auth-boundary-认证流程与边界条件测试-仅输入用户名应被拒绝-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\test-results\auth-boundary-认证流程与边界条件测试-仅输入用户名应被拒绝-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\auth-boundary-认证流程与边界条件测试-仅输入用户名应被拒绝-chromium\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\test-results\auth-boundary-认证流程与边界条件测试-仅输入用户名应被拒绝-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\test-results\auth-boundary-认证流程与边界条件测试-仅输入用户名应被拒绝-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    TimeoutError: page.waitForSelector: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for locator('text=用户名或密码不能为空') to be visible
+
+
+      15 |     await page.click('button[type="submit"]');
+      16 |     
+    > 17 |     await page.waitForSelector('text=用户名或密码不能为空', { timeout: 5000 });
+         |                ^
+      18 |   });
+      19 |
+      20 |   test('仅输入密码应被拒绝', async ({ page }) => {
+        at D:\AI\OA\frontend\e2e\auth-boundary.spec.ts:17:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\auth-boundary-认证流程与边界条件测试-仅输入用户名应被拒绝-chromium-retry1\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\test-results\auth-boundary-认证流程与边界条件测试-仅输入用户名应被拒绝-chromium-retry1\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\auth-boundary-认证流程与边界条件测试-仅输入用户名应被拒绝-chromium-retry1\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\test-results\auth-boundary-认证流程与边界条件测试-仅输入用户名应被拒绝-chromium-retry1\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\test-results\auth-boundary-认证流程与边界条件测试-仅输入用户名应被拒绝-chromium-retry1\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</error>
+</testcase>
+<testcase name="认证流程与边界条件测试 › 仅输入密码应被拒绝" classname="auth-boundary.spec.ts" time="19.474">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|auth-boundary-认证流程与边界条件测试-仅输入密码应被拒绝-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|auth-boundary-认证流程与边界条件测试-仅输入密码应被拒绝-chromium\video.webm]]
+
+[[ATTACHMENT|auth-boundary-认证流程与边界条件测试-仅输入密码应被拒绝-chromium\error-context.md]]
+
+[[ATTACHMENT|auth-boundary-认证流程与边界条件测试-仅输入密码应被拒绝-chromium\trace.zip]]
+
+[[ATTACHMENT|auth-boundary-认证流程与边界条件测试-仅输入密码应被拒绝-chromium-retry1\test-failed-1.png]]
+
+[[ATTACHMENT|auth-boundary-认证流程与边界条件测试-仅输入密码应被拒绝-chromium-retry1\video.webm]]
+
+[[ATTACHMENT|auth-boundary-认证流程与边界条件测试-仅输入密码应被拒绝-chromium-retry1\error-context.md]]
+
+[[ATTACHMENT|auth-boundary-认证流程与边界条件测试-仅输入密码应被拒绝-chromium-retry1\trace.zip]]
+]]>
+</system-out>
+<error message="page.waitForSelector: Timeout 5000ms exceeded." type="TimeoutError">
+<![CDATA[  [chromium] › auth-boundary.spec.ts:20:3 › 认证流程与边界条件测试 › 仅输入密码应被拒绝 ────────────────────────────────
+
+    TimeoutError: page.waitForSelector: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for locator('text=用户名或密码不能为空') to be visible
+
+
+      23 |     await page.click('button[type="submit"]');
+      24 |     
+    > 25 |     await page.waitForSelector('text=用户名或密码不能为空', { timeout: 5000 });
+         |                ^
+      26 |   });
+      27 |
+      28 |   test('超长输入应被处理', async ({ page }) => {
+        at D:\AI\OA\frontend\e2e\auth-boundary.spec.ts:25:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\auth-boundary-认证流程与边界条件测试-仅输入密码应被拒绝-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\test-results\auth-boundary-认证流程与边界条件测试-仅输入密码应被拒绝-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\auth-boundary-认证流程与边界条件测试-仅输入密码应被拒绝-chromium\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\test-results\auth-boundary-认证流程与边界条件测试-仅输入密码应被拒绝-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\test-results\auth-boundary-认证流程与边界条件测试-仅输入密码应被拒绝-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    TimeoutError: page.waitForSelector: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for locator('text=用户名或密码不能为空') to be visible
+
+
+      23 |     await page.click('button[type="submit"]');
+      24 |     
+    > 25 |     await page.waitForSelector('text=用户名或密码不能为空', { timeout: 5000 });
+         |                ^
+      26 |   });
+      27 |
+      28 |   test('超长输入应被处理', async ({ page }) => {
+        at D:\AI\OA\frontend\e2e\auth-boundary.spec.ts:25:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\auth-boundary-认证流程与边界条件测试-仅输入密码应被拒绝-chromium-retry1\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\test-results\auth-boundary-认证流程与边界条件测试-仅输入密码应被拒绝-chromium-retry1\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\auth-boundary-认证流程与边界条件测试-仅输入密码应被拒绝-chromium-retry1\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\test-results\auth-boundary-认证流程与边界条件测试-仅输入密码应被拒绝-chromium-retry1\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\test-results\auth-boundary-认证流程与边界条件测试-仅输入密码应被拒绝-chromium-retry1\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</error>
+</testcase>
+<testcase name="认证流程与边界条件测试 › 超长输入应被处理" classname="auth-boundary.spec.ts" time="8.991">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|auth-boundary-认证流程与边界条件测试-超长输入应被处理-chromium\test-finished-1.png]]
+]]>
+</system-out>
+</testcase>
+<testcase name="认证流程与边界条件测试 › 特殊字符输入应被处理" classname="auth-boundary.spec.ts" time="6.525">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|auth-boundary-认证流程与边界条件测试-特殊字符输入应被处理-chromium\test-finished-1.png]]
+]]>
+</system-out>
+</testcase>
+<testcase name="认证流程与边界条件测试 › SQL 注入尝试应被拒绝" classname="auth-boundary.spec.ts" time="6.253">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|auth-boundary-认证流程与边界条件测试-SQL-注入尝试应被拒绝-chromium\test-finished-1.png]]
+]]>
+</system-out>
+</testcase>
+<testcase name="认证流程与边界条件测试 › 连续登录失败应触发锁定" classname="auth-boundary.spec.ts" time="18.384">
+<system-out>
+<![CDATA[登录锁定状态: 未锁定
+
+[[ATTACHMENT|auth-boundary-认证流程与边界条件测试-连续登录失败应触发锁定-chromium\test-finished-1.png]]
+]]>
+</system-out>
+</testcase>
+<testcase name="认证流程与边界条件测试 › 已登录用户访问登录页应重定向" classname="auth-boundary.spec.ts" time="15.412">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|auth-boundary-认证流程与边界条件测试-已登录用户访问登录页应重定向-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|auth-boundary-认证流程与边界条件测试-已登录用户访问登录页应重定向-chromium\video.webm]]
+
+[[ATTACHMENT|auth-boundary-认证流程与边界条件测试-已登录用户访问登录页应重定向-chromium\error-context.md]]
+
+[[ATTACHMENT|auth-boundary-认证流程与边界条件测试-已登录用户访问登录页应重定向-chromium\trace.zip]]
+
+[[ATTACHMENT|auth-boundary-认证流程与边界条件测试-已登录用户访问登录页应重定向-chromium-retry1\test-failed-1.png]]
+
+[[ATTACHMENT|auth-boundary-认证流程与边界条件测试-已登录用户访问登录页应重定向-chromium-retry1\video.webm]]
+
+[[ATTACHMENT|auth-boundary-认证流程与边界条件测试-已登录用户访问登录页应重定向-chromium-retry1\error-context.md]]
+
+[[ATTACHMENT|auth-boundary-认证流程与边界条件测试-已登录用户访问登录页应重定向-chromium-retry1\trace.zip]]
+]]>
+</system-out>
+<failure message="expect(received).not.toContain(expected) // indexOf" type="expect.not.toContain">
+<![CDATA[  [chromium] › auth-boundary.spec.ts:82:3 › 认证流程与边界条件测试 › 已登录用户访问登录页应重定向 ───────────────────────────
+
+    Error: expect(received).not.toContain(expected) // indexOf
+
+    Expected substring: not "/login"
+    Received string:        "http://localhost:5173/login"
+
+      90 |     
+      91 |     await page.waitForTimeout(2000);
+    > 92 |     expect(page.url()).not.toContain('/login');
+         |                            ^
+      93 |   });
+      94 |
+      95 |   test('未登录访问受保护页面应重定向到登录', async ({ page }) => {
+        at D:\AI\OA\frontend\e2e\auth-boundary.spec.ts:92:28
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\auth-boundary-认证流程与边界条件测试-已登录用户访问登录页应重定向-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\test-results\auth-boundary-认证流程与边界条件测试-已登录用户访问登录页应重定向-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\auth-boundary-认证流程与边界条件测试-已登录用户访问登录页应重定向-chromium\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\test-results\auth-boundary-认证流程与边界条件测试-已登录用户访问登录页应重定向-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\test-results\auth-boundary-认证流程与边界条件测试-已登录用户访问登录页应重定向-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Error: expect(received).not.toContain(expected) // indexOf
+
+    Expected substring: not "/login"
+    Received string:        "http://localhost:5173/login"
+
+      90 |     
+      91 |     await page.waitForTimeout(2000);
+    > 92 |     expect(page.url()).not.toContain('/login');
+         |                            ^
+      93 |   });
+      94 |
+      95 |   test('未登录访问受保护页面应重定向到登录', async ({ page }) => {
+        at D:\AI\OA\frontend\e2e\auth-boundary.spec.ts:92:28
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\auth-boundary-认证流程与边界条件测试-已登录用户访问登录页应重定向-chromium-retry1\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\test-results\auth-boundary-认证流程与边界条件测试-已登录用户访问登录页应重定向-chromium-retry1\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\auth-boundary-认证流程与边界条件测试-已登录用户访问登录页应重定向-chromium-retry1\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\test-results\auth-boundary-认证流程与边界条件测试-已登录用户访问登录页应重定向-chromium-retry1\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\test-results\auth-boundary-认证流程与边界条件测试-已登录用户访问登录页应重定向-chromium-retry1\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+</testcase>
+<testcase name="认证流程与边界条件测试 › 未登录访问受保护页面应重定向到登录" classname="auth-boundary.spec.ts" time="28.768">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|auth-boundary-认证流程与边界条件测试-未登录访问受保护页面应重定向到登录-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|auth-boundary-认证流程与边界条件测试-未登录访问受保护页面应重定向到登录-chromium\video.webm]]
+
+[[ATTACHMENT|auth-boundary-认证流程与边界条件测试-未登录访问受保护页面应重定向到登录-chromium\error-context.md]]
+
+[[ATTACHMENT|auth-boundary-认证流程与边界条件测试-未登录访问受保护页面应重定向到登录-chromium\trace.zip]]
+
+[[ATTACHMENT|auth-boundary-认证流程与边界条件测试-未登录访问受保护页面应重定向到登录-chromium-retry1\test-failed-1.png]]
+
+[[ATTACHMENT|auth-boundary-认证流程与边界条件测试-未登录访问受保护页面应重定向到登录-chromium-retry1\video.webm]]
+
+[[ATTACHMENT|auth-boundary-认证流程与边界条件测试-未登录访问受保护页面应重定向到登录-chromium-retry1\error-context.md]]
+
+[[ATTACHMENT|auth-boundary-认证流程与边界条件测试-未登录访问受保护页面应重定向到登录-chromium-retry1\trace.zip]]
+]]>
+</system-out>
+<error message="page.waitForURL: Timeout 10000ms exceeded." type="TimeoutError">
+<![CDATA[  [chromium] › auth-boundary.spec.ts:95:3 › 认证流程与边界条件测试 › 未登录访问受保护页面应重定向到登录 ────────────────────────
+
+    TimeoutError: page.waitForURL: Timeout 10000ms exceeded.
+    =========================== logs ===========================
+    waiting for navigation to "**/login" until "load"
+    ============================================================
+
+       96 |     await page.goto('/system/user');
+       97 |     
+    >  98 |     await page.waitForURL('**/login', { timeout: 10000 });
+          |                ^
+       99 |     expect(page.url()).toContain('/login');
+      100 |   });
+      101 |
+        at D:\AI\OA\frontend\e2e\auth-boundary.spec.ts:98:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\auth-boundary-认证流程与边界条件测试-未登录访问受保护页面应重定向到登录-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\test-results\auth-boundary-认证流程与边界条件测试-未登录访问受保护页面应重定向到登录-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\auth-boundary-认证流程与边界条件测试-未登录访问受保护页面应重定向到登录-chromium\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\test-results\auth-boundary-认证流程与边界条件测试-未登录访问受保护页面应重定向到登录-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\test-results\auth-boundary-认证流程与边界条件测试-未登录访问受保护页面应重定向到登录-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    TimeoutError: page.waitForURL: Timeout 10000ms exceeded.
+    =========================== logs ===========================
+    waiting for navigation to "**/login" until "load"
+    ============================================================
+
+       96 |     await page.goto('/system/user');
+       97 |     
+    >  98 |     await page.waitForURL('**/login', { timeout: 10000 });
+          |                ^
+       99 |     expect(page.url()).toContain('/login');
+      100 |   });
+      101 |
+        at D:\AI\OA\frontend\e2e\auth-boundary.spec.ts:98:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\auth-boundary-认证流程与边界条件测试-未登录访问受保护页面应重定向到登录-chromium-retry1\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\test-results\auth-boundary-认证流程与边界条件测试-未登录访问受保护页面应重定向到登录-chromium-retry1\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\auth-boundary-认证流程与边界条件测试-未登录访问受保护页面应重定向到登录-chromium-retry1\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\test-results\auth-boundary-认证流程与边界条件测试-未登录访问受保护页面应重定向到登录-chromium-retry1\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\test-results\auth-boundary-认证流程与边界条件测试-未登录访问受保护页面应重定向到登录-chromium-retry1\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</error>
+</testcase>
+<testcase name="认证流程与边界条件测试 › 刷新页面后登录状态应保持" classname="auth-boundary.spec.ts" time="17.394">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|auth-boundary-认证流程与边界条件测试-刷新页面后登录状态应保持-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|auth-boundary-认证流程与边界条件测试-刷新页面后登录状态应保持-chromium\video.webm]]
+
+[[ATTACHMENT|auth-boundary-认证流程与边界条件测试-刷新页面后登录状态应保持-chromium\error-context.md]]
+
+[[ATTACHMENT|auth-boundary-认证流程与边界条件测试-刷新页面后登录状态应保持-chromium\trace.zip]]
+
+[[ATTACHMENT|auth-boundary-认证流程与边界条件测试-刷新页面后登录状态应保持-chromium-retry1\test-failed-1.png]]
+
+[[ATTACHMENT|auth-boundary-认证流程与边界条件测试-刷新页面后登录状态应保持-chromium-retry1\video.webm]]
+
+[[ATTACHMENT|auth-boundary-认证流程与边界条件测试-刷新页面后登录状态应保持-chromium-retry1\error-context.md]]
+
+[[ATTACHMENT|auth-boundary-认证流程与边界条件测试-刷新页面后登录状态应保持-chromium-retry1\trace.zip]]
+]]>
+</system-out>
+<failure message="expect(received).not.toContain(expected) // indexOf" type="expect.not.toContain">
+<![CDATA[  [chromium] › auth-boundary.spec.ts:102:3 › 认证流程与边界条件测试 › 刷新页面后登录状态应保持 ────────────────────────────
+
+    Error: expect(received).not.toContain(expected) // indexOf
+
+    Expected substring: not "/login"
+    Received string:        "http://localhost:5173/login"
+
+      110 |     await page.waitForTimeout(3000);
+      111 |     
+    > 112 |     expect(page.url()).not.toContain('/login');
+          |                            ^
+      113 |   });
+      114 | });
+      115 |
+        at D:\AI\OA\frontend\e2e\auth-boundary.spec.ts:112:28
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\auth-boundary-认证流程与边界条件测试-刷新页面后登录状态应保持-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\test-results\auth-boundary-认证流程与边界条件测试-刷新页面后登录状态应保持-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\auth-boundary-认证流程与边界条件测试-刷新页面后登录状态应保持-chromium\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\test-results\auth-boundary-认证流程与边界条件测试-刷新页面后登录状态应保持-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\test-results\auth-boundary-认证流程与边界条件测试-刷新页面后登录状态应保持-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Error: expect(received).not.toContain(expected) // indexOf
+
+    Expected substring: not "/login"
+    Received string:        "http://localhost:5173/login"
+
+      110 |     await page.waitForTimeout(3000);
+      111 |     
+    > 112 |     expect(page.url()).not.toContain('/login');
+          |                            ^
+      113 |   });
+      114 | });
+      115 |
+        at D:\AI\OA\frontend\e2e\auth-boundary.spec.ts:112:28
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\auth-boundary-认证流程与边界条件测试-刷新页面后登录状态应保持-chromium-retry1\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\test-results\auth-boundary-认证流程与边界条件测试-刷新页面后登录状态应保持-chromium-retry1\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\auth-boundary-认证流程与边界条件测试-刷新页面后登录状态应保持-chromium-retry1\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\test-results\auth-boundary-认证流程与边界条件测试-刷新页面后登录状态应保持-chromium-retry1\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\test-results\auth-boundary-认证流程与边界条件测试-刷新页面后登录状态应保持-chromium-retry1\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+</testcase>
+</testsuite>
+<testsuite name="core-functionality.spec.ts" timestamp="2026-04-17T00:16:42.358Z" hostname="chromium" tests="8" failures="2" skipped="0" time="152.119" errors="6">
+<testcase name="系统核心功能 E2E 测试 › 完整用户管理流程" classname="core-functionality.spec.ts" time="10.014">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|core-functionality-系统核心功能-E2E-测试-完整用户管理流程-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|core-functionality-系统核心功能-E2E-测试-完整用户管理流程-chromium\video.webm]]
+
+[[ATTACHMENT|core-functionality-系统核心功能-E2E-测试-完整用户管理流程-chromium\error-context.md]]
+
+[[ATTACHMENT|core-functionality-系统核心功能-E2E-测试-完整用户管理流程-chromium\trace.zip]]
+
+[[ATTACHMENT|core-functionality-系统核心功能-E2E-测试-完整用户管理流程-chromium-retry1\test-failed-1.png]]
+
+[[ATTACHMENT|core-functionality-系统核心功能-E2E-测试-完整用户管理流程-chromium-retry1\video.webm]]
+
+[[ATTACHMENT|core-functionality-系统核心功能-E2E-测试-完整用户管理流程-chromium-retry1\error-context.md]]
+
+[[ATTACHMENT|core-functionality-系统核心功能-E2E-测试-完整用户管理流程-chromium-retry1\trace.zip]]
+]]>
+</system-out>
+<failure message="expect(received).not.toContain(expected) // indexOf" type="expect.not.toContain">
+<![CDATA[  [chromium] › core-functionality.spec.ts:4:3 › 系统核心功能 E2E 测试 › 完整用户管理流程 ───────────────────────────
+
+    Error: expect(received).not.toContain(expected) // indexOf
+
+    Expected substring: not "/login"
+    Received string:        "http://localhost:5173/login"
+
+       9 |     await page.waitForURL('**/*', { timeout: 10000 });
+      10 |
+    > 11 |     expect(page.url()).not.toContain('/login');
+         |                            ^
+      12 |
+      13 |     await page.goto('/system/user');
+      14 |     await page.waitForSelector('text=新增', { timeout: 5000 });
+        at D:\AI\OA\frontend\e2e\core-functionality.spec.ts:11:28
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\core-functionality-系统核心功能-E2E-测试-完整用户管理流程-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\test-results\core-functionality-系统核心功能-E2E-测试-完整用户管理流程-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\core-functionality-系统核心功能-E2E-测试-完整用户管理流程-chromium\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\test-results\core-functionality-系统核心功能-E2E-测试-完整用户管理流程-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\test-results\core-functionality-系统核心功能-E2E-测试-完整用户管理流程-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Error: expect(received).not.toContain(expected) // indexOf
+
+    Expected substring: not "/login"
+    Received string:        "http://localhost:5173/login"
+
+       9 |     await page.waitForURL('**/*', { timeout: 10000 });
+      10 |
+    > 11 |     expect(page.url()).not.toContain('/login');
+         |                            ^
+      12 |
+      13 |     await page.goto('/system/user');
+      14 |     await page.waitForSelector('text=新增', { timeout: 5000 });
+        at D:\AI\OA\frontend\e2e\core-functionality.spec.ts:11:28
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\core-functionality-系统核心功能-E2E-测试-完整用户管理流程-chromium-retry1\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\test-results\core-functionality-系统核心功能-E2E-测试-完整用户管理流程-chromium-retry1\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\core-functionality-系统核心功能-E2E-测试-完整用户管理流程-chromium-retry1\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\test-results\core-functionality-系统核心功能-E2E-测试-完整用户管理流程-chromium-retry1\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\test-results\core-functionality-系统核心功能-E2E-测试-完整用户管理流程-chromium-retry1\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+</testcase>
+<testcase name="系统核心功能 E2E 测试 › 角色管理功能" classname="core-functionality.spec.ts" time="20.991">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|core-functionality-系统核心功能-E2E-测试-角色管理功能-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|core-functionality-系统核心功能-E2E-测试-角色管理功能-chromium\video.webm]]
+
+[[ATTACHMENT|core-functionality-系统核心功能-E2E-测试-角色管理功能-chromium\error-context.md]]
+
+[[ATTACHMENT|core-functionality-系统核心功能-E2E-测试-角色管理功能-chromium\trace.zip]]
+
+[[ATTACHMENT|core-functionality-系统核心功能-E2E-测试-角色管理功能-chromium-retry1\test-failed-1.png]]
+
+[[ATTACHMENT|core-functionality-系统核心功能-E2E-测试-角色管理功能-chromium-retry1\video.webm]]
+
+[[ATTACHMENT|core-functionality-系统核心功能-E2E-测试-角色管理功能-chromium-retry1\error-context.md]]
+
+[[ATTACHMENT|core-functionality-系统核心功能-E2E-测试-角色管理功能-chromium-retry1\trace.zip]]
+]]>
+</system-out>
+<error message="page.waitForSelector: Timeout 5000ms exceeded." type="TimeoutError">
+<![CDATA[  [chromium] › core-functionality.spec.ts:20:3 › 系统核心功能 E2E 测试 › 角色管理功能 ────────────────────────────
+
+    TimeoutError: page.waitForSelector: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for locator('text=新增') to be visible
+
+
+      26 |
+      27 |     await page.goto('/system/role');
+    > 28 |     await page.waitForSelector('text=新增', { timeout: 5000 });
+         |                ^
+      29 |
+      30 |     const roleList = page.locator('.ant-table-tbody');
+      31 |     await expect(roleList).toBeVisible();
+        at D:\AI\OA\frontend\e2e\core-functionality.spec.ts:28:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\core-functionality-系统核心功能-E2E-测试-角色管理功能-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\test-results\core-functionality-系统核心功能-E2E-测试-角色管理功能-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\core-functionality-系统核心功能-E2E-测试-角色管理功能-chromium\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\test-results\core-functionality-系统核心功能-E2E-测试-角色管理功能-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\test-results\core-functionality-系统核心功能-E2E-测试-角色管理功能-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    TimeoutError: page.waitForSelector: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for locator('text=新增') to be visible
+
+
+      26 |
+      27 |     await page.goto('/system/role');
+    > 28 |     await page.waitForSelector('text=新增', { timeout: 5000 });
+         |                ^
+      29 |
+      30 |     const roleList = page.locator('.ant-table-tbody');
+      31 |     await expect(roleList).toBeVisible();
+        at D:\AI\OA\frontend\e2e\core-functionality.spec.ts:28:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\core-functionality-系统核心功能-E2E-测试-角色管理功能-chromium-retry1\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\test-results\core-functionality-系统核心功能-E2E-测试-角色管理功能-chromium-retry1\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\core-functionality-系统核心功能-E2E-测试-角色管理功能-chromium-retry1\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\test-results\core-functionality-系统核心功能-E2E-测试-角色管理功能-chromium-retry1\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\test-results\core-functionality-系统核心功能-E2E-测试-角色管理功能-chromium-retry1\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</error>
+</testcase>
+<testcase name="系统核心功能 E2E 测试 › 部门管理功能" classname="core-functionality.spec.ts" time="21.457">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|core-functionality-系统核心功能-E2E-测试-部门管理功能-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|core-functionality-系统核心功能-E2E-测试-部门管理功能-chromium\video.webm]]
+
+[[ATTACHMENT|core-functionality-系统核心功能-E2E-测试-部门管理功能-chromium\error-context.md]]
+
+[[ATTACHMENT|core-functionality-系统核心功能-E2E-测试-部门管理功能-chromium\trace.zip]]
+
+[[ATTACHMENT|core-functionality-系统核心功能-E2E-测试-部门管理功能-chromium-retry1\test-failed-1.png]]
+
+[[ATTACHMENT|core-functionality-系统核心功能-E2E-测试-部门管理功能-chromium-retry1\video.webm]]
+
+[[ATTACHMENT|core-functionality-系统核心功能-E2E-测试-部门管理功能-chromium-retry1\error-context.md]]
+
+[[ATTACHMENT|core-functionality-系统核心功能-E2E-测试-部门管理功能-chromium-retry1\trace.zip]]
+]]>
+</system-out>
+<error message="page.waitForSelector: Timeout 5000ms exceeded." type="TimeoutError">
+<![CDATA[  [chromium] › core-functionality.spec.ts:34:3 › 系统核心功能 E2E 测试 › 部门管理功能 ────────────────────────────
+
+    TimeoutError: page.waitForSelector: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for locator('text=新增') to be visible
+
+
+      40 |
+      41 |     await page.goto('/system/department');
+    > 42 |     await page.waitForSelector('text=新增', { timeout: 5000 });
+         |                ^
+      43 |
+      44 |     const deptList = page.locator('.ant-table-tbody');
+      45 |     await expect(deptList).toBeVisible();
+        at D:\AI\OA\frontend\e2e\core-functionality.spec.ts:42:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\core-functionality-系统核心功能-E2E-测试-部门管理功能-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\test-results\core-functionality-系统核心功能-E2E-测试-部门管理功能-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\core-functionality-系统核心功能-E2E-测试-部门管理功能-chromium\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\test-results\core-functionality-系统核心功能-E2E-测试-部门管理功能-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\test-results\core-functionality-系统核心功能-E2E-测试-部门管理功能-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    TimeoutError: page.waitForSelector: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for locator('text=新增') to be visible
+
+
+      40 |
+      41 |     await page.goto('/system/department');
+    > 42 |     await page.waitForSelector('text=新增', { timeout: 5000 });
+         |                ^
+      43 |
+      44 |     const deptList = page.locator('.ant-table-tbody');
+      45 |     await expect(deptList).toBeVisible();
+        at D:\AI\OA\frontend\e2e\core-functionality.spec.ts:42:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\core-functionality-系统核心功能-E2E-测试-部门管理功能-chromium-retry1\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\test-results\core-functionality-系统核心功能-E2E-测试-部门管理功能-chromium-retry1\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\core-functionality-系统核心功能-E2E-测试-部门管理功能-chromium-retry1\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\test-results\core-functionality-系统核心功能-E2E-测试-部门管理功能-chromium-retry1\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\test-results\core-functionality-系统核心功能-E2E-测试-部门管理功能-chromium-retry1\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</error>
+</testcase>
+<testcase name="系统核心功能 E2E 测试 › 菜单管理功能" classname="core-functionality.spec.ts" time="21.013">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|core-functionality-系统核心功能-E2E-测试-菜单管理功能-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|core-functionality-系统核心功能-E2E-测试-菜单管理功能-chromium\video.webm]]
+
+[[ATTACHMENT|core-functionality-系统核心功能-E2E-测试-菜单管理功能-chromium\error-context.md]]
+
+[[ATTACHMENT|core-functionality-系统核心功能-E2E-测试-菜单管理功能-chromium\trace.zip]]
+
+[[ATTACHMENT|core-functionality-系统核心功能-E2E-测试-菜单管理功能-chromium-retry1\test-failed-1.png]]
+
+[[ATTACHMENT|core-functionality-系统核心功能-E2E-测试-菜单管理功能-chromium-retry1\video.webm]]
+
+[[ATTACHMENT|core-functionality-系统核心功能-E2E-测试-菜单管理功能-chromium-retry1\error-context.md]]
+
+[[ATTACHMENT|core-functionality-系统核心功能-E2E-测试-菜单管理功能-chromium-retry1\trace.zip]]
+]]>
+</system-out>
+<error message="page.waitForSelector: Timeout 5000ms exceeded." type="TimeoutError">
+<![CDATA[  [chromium] › core-functionality.spec.ts:48:3 › 系统核心功能 E2E 测试 › 菜单管理功能 ────────────────────────────
+
+    TimeoutError: page.waitForSelector: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for locator('text=新增') to be visible
+
+
+      54 |
+      55 |     await page.goto('/system/menu');
+    > 56 |     await page.waitForSelector('text=新增', { timeout: 5000 });
+         |                ^
+      57 |
+      58 |     const menuTree = page.locator('.ant-tree');
+      59 |     await expect(menuTree).toBeVisible();
+        at D:\AI\OA\frontend\e2e\core-functionality.spec.ts:56:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\core-functionality-系统核心功能-E2E-测试-菜单管理功能-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\test-results\core-functionality-系统核心功能-E2E-测试-菜单管理功能-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\core-functionality-系统核心功能-E2E-测试-菜单管理功能-chromium\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\test-results\core-functionality-系统核心功能-E2E-测试-菜单管理功能-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\test-results\core-functionality-系统核心功能-E2E-测试-菜单管理功能-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    TimeoutError: page.waitForSelector: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for locator('text=新增') to be visible
+
+
+      54 |
+      55 |     await page.goto('/system/menu');
+    > 56 |     await page.waitForSelector('text=新增', { timeout: 5000 });
+         |                ^
+      57 |
+      58 |     const menuTree = page.locator('.ant-tree');
+      59 |     await expect(menuTree).toBeVisible();
+        at D:\AI\OA\frontend\e2e\core-functionality.spec.ts:56:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\core-functionality-系统核心功能-E2E-测试-菜单管理功能-chromium-retry1\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\test-results\core-functionality-系统核心功能-E2E-测试-菜单管理功能-chromium-retry1\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\core-functionality-系统核心功能-E2E-测试-菜单管理功能-chromium-retry1\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\test-results\core-functionality-系统核心功能-E2E-测试-菜单管理功能-chromium-retry1\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\test-results\core-functionality-系统核心功能-E2E-测试-菜单管理功能-chromium-retry1\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</error>
+</testcase>
+<testcase name="系统核心功能 E2E 测试 › 字典管理功能" classname="core-functionality.spec.ts" time="22.019">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|core-functionality-系统核心功能-E2E-测试-字典管理功能-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|core-functionality-系统核心功能-E2E-测试-字典管理功能-chromium\video.webm]]
+
+[[ATTACHMENT|core-functionality-系统核心功能-E2E-测试-字典管理功能-chromium\error-context.md]]
+
+[[ATTACHMENT|core-functionality-系统核心功能-E2E-测试-字典管理功能-chromium\trace.zip]]
+
+[[ATTACHMENT|core-functionality-系统核心功能-E2E-测试-字典管理功能-chromium-retry1\test-failed-1.png]]
+
+[[ATTACHMENT|core-functionality-系统核心功能-E2E-测试-字典管理功能-chromium-retry1\video.webm]]
+
+[[ATTACHMENT|core-functionality-系统核心功能-E2E-测试-字典管理功能-chromium-retry1\error-context.md]]
+
+[[ATTACHMENT|core-functionality-系统核心功能-E2E-测试-字典管理功能-chromium-retry1\trace.zip]]
+]]>
+</system-out>
+<error message="page.waitForSelector: Timeout 5000ms exceeded." type="TimeoutError">
+<![CDATA[  [chromium] › core-functionality.spec.ts:62:3 › 系统核心功能 E2E 测试 › 字典管理功能 ────────────────────────────
+
+    TimeoutError: page.waitForSelector: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for locator('text=新增') to be visible
+
+
+      68 |
+      69 |     await page.goto('/system/dict');
+    > 70 |     await page.waitForSelector('text=新增', { timeout: 5000 });
+         |                ^
+      71 |
+      72 |     const dictList = page.locator('.ant-table-tbody');
+      73 |     await expect(dictList).toBeVisible();
+        at D:\AI\OA\frontend\e2e\core-functionality.spec.ts:70:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\core-functionality-系统核心功能-E2E-测试-字典管理功能-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\test-results\core-functionality-系统核心功能-E2E-测试-字典管理功能-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\core-functionality-系统核心功能-E2E-测试-字典管理功能-chromium\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\test-results\core-functionality-系统核心功能-E2E-测试-字典管理功能-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\test-results\core-functionality-系统核心功能-E2E-测试-字典管理功能-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    TimeoutError: page.waitForSelector: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for locator('text=新增') to be visible
+
+
+      68 |
+      69 |     await page.goto('/system/dict');
+    > 70 |     await page.waitForSelector('text=新增', { timeout: 5000 });
+         |                ^
+      71 |
+      72 |     const dictList = page.locator('.ant-table-tbody');
+      73 |     await expect(dictList).toBeVisible();
+        at D:\AI\OA\frontend\e2e\core-functionality.spec.ts:70:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\core-functionality-系统核心功能-E2E-测试-字典管理功能-chromium-retry1\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\test-results\core-functionality-系统核心功能-E2E-测试-字典管理功能-chromium-retry1\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\core-functionality-系统核心功能-E2E-测试-字典管理功能-chromium-retry1\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\test-results\core-functionality-系统核心功能-E2E-测试-字典管理功能-chromium-retry1\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\test-results\core-functionality-系统核心功能-E2E-测试-字典管理功能-chromium-retry1\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</error>
+</testcase>
+<testcase name="系统核心功能 E2E 测试 › 个人中心功能" classname="core-functionality.spec.ts" time="21.754">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|core-functionality-系统核心功能-E2E-测试-个人中心功能-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|core-functionality-系统核心功能-E2E-测试-个人中心功能-chromium\video.webm]]
+
+[[ATTACHMENT|core-functionality-系统核心功能-E2E-测试-个人中心功能-chromium\error-context.md]]
+
+[[ATTACHMENT|core-functionality-系统核心功能-E2E-测试-个人中心功能-chromium\trace.zip]]
+
+[[ATTACHMENT|core-functionality-系统核心功能-E2E-测试-个人中心功能-chromium-retry1\test-failed-1.png]]
+
+[[ATTACHMENT|core-functionality-系统核心功能-E2E-测试-个人中心功能-chromium-retry1\video.webm]]
+
+[[ATTACHMENT|core-functionality-系统核心功能-E2E-测试-个人中心功能-chromium-retry1\error-context.md]]
+
+[[ATTACHMENT|core-functionality-系统核心功能-E2E-测试-个人中心功能-chromium-retry1\trace.zip]]
+]]>
+</system-out>
+<error message="page.waitForSelector: Timeout 5000ms exceeded." type="TimeoutError">
+<![CDATA[  [chromium] › core-functionality.spec.ts:76:3 › 系统核心功能 E2E 测试 › 个人中心功能 ────────────────────────────
+
+    TimeoutError: page.waitForSelector: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for locator('text=基本设置') to be visible
+
+
+      82 |
+      83 |     await page.goto('/account/center');
+    > 84 |     await page.waitForSelector('text=基本设置', { timeout: 5000 });
+         |                ^
+      85 |
+      86 |     await expect(page.locator('text=基本设置')).toBeVisible();
+      87 |     await expect(page.locator('text=修改密码')).toBeVisible();
+        at D:\AI\OA\frontend\e2e\core-functionality.spec.ts:84:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\core-functionality-系统核心功能-E2E-测试-个人中心功能-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\test-results\core-functionality-系统核心功能-E2E-测试-个人中心功能-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\core-functionality-系统核心功能-E2E-测试-个人中心功能-chromium\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\test-results\core-functionality-系统核心功能-E2E-测试-个人中心功能-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\test-results\core-functionality-系统核心功能-E2E-测试-个人中心功能-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    TimeoutError: page.waitForSelector: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for locator('text=基本设置') to be visible
+
+
+      82 |
+      83 |     await page.goto('/account/center');
+    > 84 |     await page.waitForSelector('text=基本设置', { timeout: 5000 });
+         |                ^
+      85 |
+      86 |     await expect(page.locator('text=基本设置')).toBeVisible();
+      87 |     await expect(page.locator('text=修改密码')).toBeVisible();
+        at D:\AI\OA\frontend\e2e\core-functionality.spec.ts:84:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\core-functionality-系统核心功能-E2E-测试-个人中心功能-chromium-retry1\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\test-results\core-functionality-系统核心功能-E2E-测试-个人中心功能-chromium-retry1\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\core-functionality-系统核心功能-E2E-测试-个人中心功能-chromium-retry1\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\test-results\core-functionality-系统核心功能-E2E-测试-个人中心功能-chromium-retry1\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\test-results\core-functionality-系统核心功能-E2E-测试-个人中心功能-chromium-retry1\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</error>
+</testcase>
+<testcase name="系统核心功能 E2E 测试 › 日志查询功能" classname="core-functionality.spec.ts" time="23.516">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|core-functionality-系统核心功能-E2E-测试-日志查询功能-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|core-functionality-系统核心功能-E2E-测试-日志查询功能-chromium\video.webm]]
+
+[[ATTACHMENT|core-functionality-系统核心功能-E2E-测试-日志查询功能-chromium\error-context.md]]
+
+[[ATTACHMENT|core-functionality-系统核心功能-E2E-测试-日志查询功能-chromium\trace.zip]]
+
+[[ATTACHMENT|core-functionality-系统核心功能-E2E-测试-日志查询功能-chromium-retry1\test-failed-1.png]]
+
+[[ATTACHMENT|core-functionality-系统核心功能-E2E-测试-日志查询功能-chromium-retry1\video.webm]]
+
+[[ATTACHMENT|core-functionality-系统核心功能-E2E-测试-日志查询功能-chromium-retry1\error-context.md]]
+
+[[ATTACHMENT|core-functionality-系统核心功能-E2E-测试-日志查询功能-chromium-retry1\trace.zip]]
+]]>
+</system-out>
+<error message="page.waitForSelector: Timeout 5000ms exceeded." type="TimeoutError">
+<![CDATA[  [chromium] › core-functionality.spec.ts:90:3 › 系统核心功能 E2E 测试 › 日志查询功能 ────────────────────────────
+
+    TimeoutError: page.waitForSelector: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for locator('.ant-table-tbody') to be visible
+
+
+       96 |
+       97 |     await page.goto('/system/login_log');
+    >  98 |     await page.waitForSelector('.ant-table-tbody', { timeout: 5000 });
+          |                ^
+       99 |
+      100 |     const logTable = page.locator('.ant-table-tbody');
+      101 |     await expect(logTable).toBeVisible();
+        at D:\AI\OA\frontend\e2e\core-functionality.spec.ts:98:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\core-functionality-系统核心功能-E2E-测试-日志查询功能-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\test-results\core-functionality-系统核心功能-E2E-测试-日志查询功能-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\core-functionality-系统核心功能-E2E-测试-日志查询功能-chromium\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\test-results\core-functionality-系统核心功能-E2E-测试-日志查询功能-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\test-results\core-functionality-系统核心功能-E2E-测试-日志查询功能-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    TimeoutError: page.waitForSelector: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for locator('.ant-table-tbody') to be visible
+
+
+       96 |
+       97 |     await page.goto('/system/login_log');
+    >  98 |     await page.waitForSelector('.ant-table-tbody', { timeout: 5000 });
+          |                ^
+       99 |
+      100 |     const logTable = page.locator('.ant-table-tbody');
+      101 |     await expect(logTable).toBeVisible();
+        at D:\AI\OA\frontend\e2e\core-functionality.spec.ts:98:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\core-functionality-系统核心功能-E2E-测试-日志查询功能-chromium-retry1\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\test-results\core-functionality-系统核心功能-E2E-测试-日志查询功能-chromium-retry1\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\core-functionality-系统核心功能-E2E-测试-日志查询功能-chromium-retry1\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\test-results\core-functionality-系统核心功能-E2E-测试-日志查询功能-chromium-retry1\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\test-results\core-functionality-系统核心功能-E2E-测试-日志查询功能-chromium-retry1\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</error>
+</testcase>
+<testcase name="系统核心功能 E2E 测试 › 首页加载功能" classname="core-functionality.spec.ts" time="11.355">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|core-functionality-系统核心功能-E2E-测试-首页加载功能-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|core-functionality-系统核心功能-E2E-测试-首页加载功能-chromium\video.webm]]
+
+[[ATTACHMENT|core-functionality-系统核心功能-E2E-测试-首页加载功能-chromium\error-context.md]]
+
+[[ATTACHMENT|core-functionality-系统核心功能-E2E-测试-首页加载功能-chromium\trace.zip]]
+
+[[ATTACHMENT|core-functionality-系统核心功能-E2E-测试-首页加载功能-chromium-retry1\test-failed-1.png]]
+
+[[ATTACHMENT|core-functionality-系统核心功能-E2E-测试-首页加载功能-chromium-retry1\video.webm]]
+
+[[ATTACHMENT|core-functionality-系统核心功能-E2E-测试-首页加载功能-chromium-retry1\error-context.md]]
+
+[[ATTACHMENT|core-functionality-系统核心功能-E2E-测试-首页加载功能-chromium-retry1\trace.zip]]
+]]>
+</system-out>
+<failure message="expect(received).not.toContain(expected) // indexOf" type="expect.not.toContain">
+<![CDATA[  [chromium] › core-functionality.spec.ts:104:3 › 系统核心功能 E2E 测试 › 首页加载功能 ───────────────────────────
+
+    Error: expect(received).not.toContain(expected) // indexOf
+
+    Expected substring: not "/login"
+    Received string:        "http://localhost:5173/login"
+
+      109 |     await page.waitForURL('**/*', { timeout: 10000 });
+      110 |
+    > 111 |     expect(page.url()).not.toContain('/login');
+          |                            ^
+      112 |     
+      113 |     const welcomeText = page.locator('text=首页');
+      114 |     await expect(welcomeText).toBeVisible();
+        at D:\AI\OA\frontend\e2e\core-functionality.spec.ts:111:28
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\core-functionality-系统核心功能-E2E-测试-首页加载功能-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\test-results\core-functionality-系统核心功能-E2E-测试-首页加载功能-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\core-functionality-系统核心功能-E2E-测试-首页加载功能-chromium\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\test-results\core-functionality-系统核心功能-E2E-测试-首页加载功能-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\test-results\core-functionality-系统核心功能-E2E-测试-首页加载功能-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Error: expect(received).not.toContain(expected) // indexOf
+
+    Expected substring: not "/login"
+    Received string:        "http://localhost:5173/login"
+
+      109 |     await page.waitForURL('**/*', { timeout: 10000 });
+      110 |
+    > 111 |     expect(page.url()).not.toContain('/login');
+          |                            ^
+      112 |     
+      113 |     const welcomeText = page.locator('text=首页');
+      114 |     await expect(welcomeText).toBeVisible();
+        at D:\AI\OA\frontend\e2e\core-functionality.spec.ts:111:28
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\core-functionality-系统核心功能-E2E-测试-首页加载功能-chromium-retry1\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\test-results\core-functionality-系统核心功能-E2E-测试-首页加载功能-chromium-retry1\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\core-functionality-系统核心功能-E2E-测试-首页加载功能-chromium-retry1\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\test-results\core-functionality-系统核心功能-E2E-测试-首页加载功能-chromium-retry1\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\test-results\core-functionality-系统核心功能-E2E-测试-首页加载功能-chromium-retry1\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+</testcase>
+</testsuite>
+<testsuite name="jwt-token-security.spec.ts" timestamp="2026-04-17T00:16:42.358Z" hostname="chromium" tests="5" failures="3" skipped="0" time="117.234" errors="2">
+<testcase name="SEC-002/SEC-003: JWT Token 安全测试 › 登录页面应正常加载" classname="jwt-token-security.spec.ts" time="20.513">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|jwt-token-security-SEC-002-SEC-003-JWT-Token-安全测试-登录页面应正常加载-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|jwt-token-security-SEC-002-SEC-003-JWT-Token-安全测试-登录页面应正常加载-chromium\video.webm]]
+
+[[ATTACHMENT|jwt-token-security-SEC-002-SEC-003-JWT-Token-安全测试-登录页面应正常加载-chromium\error-context.md]]
+
+[[ATTACHMENT|jwt-token-security-SEC-002-SEC-003-JWT-Token-安全测试-登录页面应正常加载-chromium\trace.zip]]
+
+[[ATTACHMENT|jwt-token-security-SEC-002-SEC-003-JWT-Token-安全测试-登录页面应正常加载-chromium-retry1\test-failed-1.png]]
+
+[[ATTACHMENT|jwt-token-security-SEC-002-SEC-003-JWT-Token-安全测试-登录页面应正常加载-chromium-retry1\video.webm]]
+
+[[ATTACHMENT|jwt-token-security-SEC-002-SEC-003-JWT-Token-安全测试-登录页面应正常加载-chromium-retry1\error-context.md]]
+
+[[ATTACHMENT|jwt-token-security-SEC-002-SEC-003-JWT-Token-安全测试-登录页面应正常加载-chromium-retry1\trace.zip]]
+]]>
+</system-out>
+<failure message="expect(page).toHaveTitle(expected) failed" type="expect.toHaveTitle">
+<![CDATA[  [chromium] › jwt-token-security.spec.ts:4:3 › SEC-002/SEC-003: JWT Token 安全测试 › 登录页面应正常加载 ────────
+
+    Error: expect(page).toHaveTitle(expected) failed
+
+    Expected pattern: /登录/
+    Received string:  "在线OA"
+    Timeout: 5000ms
+
+    Call log:
+      - Expect "toHaveTitle" with timeout 5000ms
+        8 × unexpected value "在线OA"
+
+
+       5 |     await page.goto('/login');
+       6 |     
+    >  7 |     await expect(page).toHaveTitle(/登录/);
+         |                        ^
+       8 |     await expect(page.locator('input[placeholder*="用户名"]')).toBeVisible();
+       9 |     await expect(page.locator('input[placeholder*="密码"]')).toBeVisible();
+      10 |     await expect(page.locator('button[type="submit"]')).toBeVisible();
+        at D:\AI\OA\frontend\e2e\jwt-token-security.spec.ts:7:24
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\jwt-token-security-SEC-002-SEC-003-JWT-Token-安全测试-登录页面应正常加载-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\test-results\jwt-token-security-SEC-002-SEC-003-JWT-Token-安全测试-登录页面应正常加载-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\jwt-token-security-SEC-002-SEC-003-JWT-Token-安全测试-登录页面应正常加载-chromium\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\test-results\jwt-token-security-SEC-002-SEC-003-JWT-Token-安全测试-登录页面应正常加载-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\test-results\jwt-token-security-SEC-002-SEC-003-JWT-Token-安全测试-登录页面应正常加载-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Error: expect(page).toHaveTitle(expected) failed
+
+    Expected pattern: /登录/
+    Received string:  "在线OA"
+    Timeout: 5000ms
+
+    Call log:
+      - Expect "toHaveTitle" with timeout 5000ms
+        8 × unexpected value "在线OA"
+
+
+       5 |     await page.goto('/login');
+       6 |     
+    >  7 |     await expect(page).toHaveTitle(/登录/);
+         |                        ^
+       8 |     await expect(page.locator('input[placeholder*="用户名"]')).toBeVisible();
+       9 |     await expect(page.locator('input[placeholder*="密码"]')).toBeVisible();
+      10 |     await expect(page.locator('button[type="submit"]')).toBeVisible();
+        at D:\AI\OA\frontend\e2e\jwt-token-security.spec.ts:7:24
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\jwt-token-security-SEC-002-SEC-003-JWT-Token-安全测试-登录页面应正常加载-chromium-retry1\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\test-results\jwt-token-security-SEC-002-SEC-003-JWT-Token-安全测试-登录页面应正常加载-chromium-retry1\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\jwt-token-security-SEC-002-SEC-003-JWT-Token-安全测试-登录页面应正常加载-chromium-retry1\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\test-results\jwt-token-security-SEC-002-SEC-003-JWT-Token-安全测试-登录页面应正常加载-chromium-retry1\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\test-results\jwt-token-security-SEC-002-SEC-003-JWT-Token-安全测试-登录页面应正常加载-chromium-retry1\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+</testcase>
+<testcase name="SEC-002/SEC-003: JWT Token 安全测试 › 成功登录后应返回 Token" classname="jwt-token-security.spec.ts" time="19.879">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|jwt-token-security-SEC-002-2643c-T-Token-安全测试-成功登录后应返回-Token-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|jwt-token-security-SEC-002-2643c-T-Token-安全测试-成功登录后应返回-Token-chromium\video.webm]]
+
+[[ATTACHMENT|jwt-token-security-SEC-002-2643c-T-Token-安全测试-成功登录后应返回-Token-chromium\error-context.md]]
+
+[[ATTACHMENT|jwt-token-security-SEC-002-2643c-T-Token-安全测试-成功登录后应返回-Token-chromium\trace.zip]]
+
+[[ATTACHMENT|jwt-token-security-SEC-002-2643c-T-Token-安全测试-成功登录后应返回-Token-chromium-retry1\test-failed-1.png]]
+
+[[ATTACHMENT|jwt-token-security-SEC-002-2643c-T-Token-安全测试-成功登录后应返回-Token-chromium-retry1\video.webm]]
+
+[[ATTACHMENT|jwt-token-security-SEC-002-2643c-T-Token-安全测试-成功登录后应返回-Token-chromium-retry1\error-context.md]]
+
+[[ATTACHMENT|jwt-token-security-SEC-002-2643c-T-Token-安全测试-成功登录后应返回-Token-chromium-retry1\trace.zip]]
+]]>
+</system-out>
+<failure message="expect(received).not.toContain(expected) // indexOf" type="expect.not.toContain">
+<![CDATA[  [chromium] › jwt-token-security.spec.ts:13:3 › SEC-002/SEC-003: JWT Token 安全测试 › 成功登录后应返回 Token ──
+
+    Error: expect(received).not.toContain(expected) // indexOf
+
+    Expected substring: not "/login"
+    Received string:        "http://localhost:5173/login"
+
+      21 |     
+      22 |     const currentUrl = page.url();
+    > 23 |     expect(currentUrl).not.toContain('/login');
+         |                            ^
+      24 |     
+      25 |     const cookies = await context.cookies();
+      26 |     const storage = await page.evaluate(() => {
+        at D:\AI\OA\frontend\e2e\jwt-token-security.spec.ts:23:28
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\jwt-token-security-SEC-002-2643c-T-Token-安全测试-成功登录后应返回-Token-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\test-results\jwt-token-security-SEC-002-2643c-T-Token-安全测试-成功登录后应返回-Token-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\jwt-token-security-SEC-002-2643c-T-Token-安全测试-成功登录后应返回-Token-chromium\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\test-results\jwt-token-security-SEC-002-2643c-T-Token-安全测试-成功登录后应返回-Token-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\test-results\jwt-token-security-SEC-002-2643c-T-Token-安全测试-成功登录后应返回-Token-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Error: expect(received).not.toContain(expected) // indexOf
+
+    Expected substring: not "/login"
+    Received string:        "http://localhost:5173/login"
+
+      21 |     
+      22 |     const currentUrl = page.url();
+    > 23 |     expect(currentUrl).not.toContain('/login');
+         |                            ^
+      24 |     
+      25 |     const cookies = await context.cookies();
+      26 |     const storage = await page.evaluate(() => {
+        at D:\AI\OA\frontend\e2e\jwt-token-security.spec.ts:23:28
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\jwt-token-security-SEC-002-2643c-T-Token-安全测试-成功登录后应返回-Token-chromium-retry1\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\test-results\jwt-token-security-SEC-002-2643c-T-Token-安全测试-成功登录后应返回-Token-chromium-retry1\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\jwt-token-security-SEC-002-2643c-T-Token-安全测试-成功登录后应返回-Token-chromium-retry1\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\test-results\jwt-token-security-SEC-002-2643c-T-Token-安全测试-成功登录后应返回-Token-chromium-retry1\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\test-results\jwt-token-security-SEC-002-2643c-T-Token-安全测试-成功登录后应返回-Token-chromium-retry1\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+</testcase>
+<testcase name="SEC-002/SEC-003: JWT Token 安全测试 › Token 不应通过 URL 参数传递" classname="jwt-token-security.spec.ts" time="9.395">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|jwt-token-security-SEC-002-e02d7-en-安全测试-Token-不应通过-URL-参数传递-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|jwt-token-security-SEC-002-e02d7-en-安全测试-Token-不应通过-URL-参数传递-chromium\video.webm]]
+
+[[ATTACHMENT|jwt-token-security-SEC-002-e02d7-en-安全测试-Token-不应通过-URL-参数传递-chromium\error-context.md]]
+
+[[ATTACHMENT|jwt-token-security-SEC-002-e02d7-en-安全测试-Token-不应通过-URL-参数传递-chromium\trace.zip]]
+
+[[ATTACHMENT|jwt-token-security-SEC-002-e02d7-en-安全测试-Token-不应通过-URL-参数传递-chromium-retry1\test-failed-1.png]]
+
+[[ATTACHMENT|jwt-token-security-SEC-002-e02d7-en-安全测试-Token-不应通过-URL-参数传递-chromium-retry1\video.webm]]
+
+[[ATTACHMENT|jwt-token-security-SEC-002-e02d7-en-安全测试-Token-不应通过-URL-参数传递-chromium-retry1\error-context.md]]
+
+[[ATTACHMENT|jwt-token-security-SEC-002-e02d7-en-安全测试-Token-不应通过-URL-参数传递-chromium-retry1\trace.zip]]
+]]>
+</system-out>
+<failure message="expect(received).toBeNull()" type="expect.toBeNull">
+<![CDATA[  [chromium] › jwt-token-security.spec.ts:37:3 › SEC-002/SEC-003: JWT Token 安全测试 › Token 不应通过 URL 参数传递 
+
+    Error: expect(received).toBeNull()
+
+    Received: "fake_token_here"
+
+      43 |     });
+      44 |     
+    > 45 |     expect(urlParams).toBeNull();
+         |                       ^
+      46 |   });
+      47 |
+      48 |   test('使用无效 Token 访问受保护页面应被重定向', async ({ page }) => {
+        at D:\AI\OA\frontend\e2e\jwt-token-security.spec.ts:45:23
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\jwt-token-security-SEC-002-e02d7-en-安全测试-Token-不应通过-URL-参数传递-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\test-results\jwt-token-security-SEC-002-e02d7-en-安全测试-Token-不应通过-URL-参数传递-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\jwt-token-security-SEC-002-e02d7-en-安全测试-Token-不应通过-URL-参数传递-chromium\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\test-results\jwt-token-security-SEC-002-e02d7-en-安全测试-Token-不应通过-URL-参数传递-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\test-results\jwt-token-security-SEC-002-e02d7-en-安全测试-Token-不应通过-URL-参数传递-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Error: expect(received).toBeNull()
+
+    Received: "fake_token_here"
+
+      43 |     });
+      44 |     
+    > 45 |     expect(urlParams).toBeNull();
+         |                       ^
+      46 |   });
+      47 |
+      48 |   test('使用无效 Token 访问受保护页面应被重定向', async ({ page }) => {
+        at D:\AI\OA\frontend\e2e\jwt-token-security.spec.ts:45:23
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\jwt-token-security-SEC-002-e02d7-en-安全测试-Token-不应通过-URL-参数传递-chromium-retry1\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\test-results\jwt-token-security-SEC-002-e02d7-en-安全测试-Token-不应通过-URL-参数传递-chromium-retry1\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\jwt-token-security-SEC-002-e02d7-en-安全测试-Token-不应通过-URL-参数传递-chromium-retry1\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\test-results\jwt-token-security-SEC-002-e02d7-en-安全测试-Token-不应通过-URL-参数传递-chromium-retry1\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\test-results\jwt-token-security-SEC-002-e02d7-en-安全测试-Token-不应通过-URL-参数传递-chromium-retry1\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+</testcase>
+<testcase name="SEC-002/SEC-003: JWT Token 安全测试 › 使用无效 Token 访问受保护页面应被重定向" classname="jwt-token-security.spec.ts" time="2.529">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|jwt-token-security-SEC-002-41e9e-全测试-使用无效-Token-访问受保护页面应被重定向-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|jwt-token-security-SEC-002-41e9e-全测试-使用无效-Token-访问受保护页面应被重定向-chromium\video.webm]]
+
+[[ATTACHMENT|jwt-token-security-SEC-002-41e9e-全测试-使用无效-Token-访问受保护页面应被重定向-chromium\error-context.md]]
+
+[[ATTACHMENT|jwt-token-security-SEC-002-41e9e-全测试-使用无效-Token-访问受保护页面应被重定向-chromium\trace.zip]]
+
+[[ATTACHMENT|jwt-token-security-SEC-002-41e9e-全测试-使用无效-Token-访问受保护页面应被重定向-chromium-retry1\test-failed-1.png]]
+
+[[ATTACHMENT|jwt-token-security-SEC-002-41e9e-全测试-使用无效-Token-访问受保护页面应被重定向-chromium-retry1\video.webm]]
+
+[[ATTACHMENT|jwt-token-security-SEC-002-41e9e-全测试-使用无效-Token-访问受保护页面应被重定向-chromium-retry1\error-context.md]]
+
+[[ATTACHMENT|jwt-token-security-SEC-002-41e9e-全测试-使用无效-Token-访问受保护页面应被重定向-chromium-retry1\trace.zip]]
+]]>
+</system-out>
+<error message="page.evaluate: SecurityError: Failed to read the &apos;localStorage&apos; property from &apos;Window&apos;: Access is denied for this document." type="Error">
+<![CDATA[  [chromium] › jwt-token-security.spec.ts:48:3 › SEC-002/SEC-003: JWT Token 安全测试 › 使用无效 Token 访问受保护页面应被重定向 
+
+    Error: page.evaluate: SecurityError: Failed to read the 'localStorage' property from 'Window': Access is denied for this document.
+        at UtilityScript.evaluate (<anonymous>:304:16)
+        at UtilityScript.<anonymous> (<anonymous>:1:44)
+        at UtilityScript.evaluate (<anonymous>:304:16)
+        at UtilityScript.<anonymous> (<anonymous>:1:44)
+        at D:\AI\OA\frontend\e2e\jwt-token-security.spec.ts:49:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\jwt-token-security-SEC-002-41e9e-全测试-使用无效-Token-访问受保护页面应被重定向-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\test-results\jwt-token-security-SEC-002-41e9e-全测试-使用无效-Token-访问受保护页面应被重定向-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\jwt-token-security-SEC-002-41e9e-全测试-使用无效-Token-访问受保护页面应被重定向-chromium\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\test-results\jwt-token-security-SEC-002-41e9e-全测试-使用无效-Token-访问受保护页面应被重定向-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\test-results\jwt-token-security-SEC-002-41e9e-全测试-使用无效-Token-访问受保护页面应被重定向-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Error: page.evaluate: SecurityError: Failed to read the 'localStorage' property from 'Window': Access is denied for this document.
+        at UtilityScript.evaluate (<anonymous>:304:16)
+        at UtilityScript.<anonymous> (<anonymous>:1:44)
+        at UtilityScript.evaluate (<anonymous>:304:16)
+        at UtilityScript.<anonymous> (<anonymous>:1:44)
+        at D:\AI\OA\frontend\e2e\jwt-token-security.spec.ts:49:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\jwt-token-security-SEC-002-41e9e-全测试-使用无效-Token-访问受保护页面应被重定向-chromium-retry1\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\test-results\jwt-token-security-SEC-002-41e9e-全测试-使用无效-Token-访问受保护页面应被重定向-chromium-retry1\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\jwt-token-security-SEC-002-41e9e-全测试-使用无效-Token-访问受保护页面应被重定向-chromium-retry1\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\test-results\jwt-token-security-SEC-002-41e9e-全测试-使用无效-Token-访问受保护页面应被重定向-chromium-retry1\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\test-results\jwt-token-security-SEC-002-41e9e-全测试-使用无效-Token-访问受保护页面应被重定向-chromium-retry1\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</error>
+</testcase>
+<testcase name="SEC-002/SEC-003: JWT Token 安全测试 › 退出登录后应清除 Token" classname="jwt-token-security.spec.ts" time="64.918">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|jwt-token-security-SEC-002-1c18c-T-Token-安全测试-退出登录后应清除-Token-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|jwt-token-security-SEC-002-1c18c-T-Token-安全测试-退出登录后应清除-Token-chromium\video.webm]]
+
+[[ATTACHMENT|jwt-token-security-SEC-002-1c18c-T-Token-安全测试-退出登录后应清除-Token-chromium\error-context.md]]
+
+[[ATTACHMENT|jwt-token-security-SEC-002-1c18c-T-Token-安全测试-退出登录后应清除-Token-chromium\trace.zip]]
+
+[[ATTACHMENT|jwt-token-security-SEC-002-1c18c-T-Token-安全测试-退出登录后应清除-Token-chromium-retry1\test-failed-1.png]]
+
+[[ATTACHMENT|jwt-token-security-SEC-002-1c18c-T-Token-安全测试-退出登录后应清除-Token-chromium-retry1\video.webm]]
+
+[[ATTACHMENT|jwt-token-security-SEC-002-1c18c-T-Token-安全测试-退出登录后应清除-Token-chromium-retry1\error-context.md]]
+
+[[ATTACHMENT|jwt-token-security-SEC-002-1c18c-T-Token-安全测试-退出登录后应清除-Token-chromium-retry1\trace.zip]]
+]]>
+</system-out>
+<error message="Test timeout of 30000ms exceeded." type="Error">
+<![CDATA[  [chromium] › jwt-token-security.spec.ts:60:3 › SEC-002/SEC-003: JWT Token 安全测试 › 退出登录后应清除 Token ──
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.click: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for locator('text=admin')
+
+
+      65 |     await page.waitForURL('**/*', { timeout: 10000 });
+      66 |     
+    > 67 |     await page.locator('text=admin').click();
+         |                                      ^
+      68 |     await page.locator('text=退出登录').click();
+      69 |     
+      70 |     await page.waitForURL('**/login', { timeout: 10000 });
+        at D:\AI\OA\frontend\e2e\jwt-token-security.spec.ts:67:38
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\jwt-token-security-SEC-002-1c18c-T-Token-安全测试-退出登录后应清除-Token-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\test-results\jwt-token-security-SEC-002-1c18c-T-Token-安全测试-退出登录后应清除-Token-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\jwt-token-security-SEC-002-1c18c-T-Token-安全测试-退出登录后应清除-Token-chromium\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\test-results\jwt-token-security-SEC-002-1c18c-T-Token-安全测试-退出登录后应清除-Token-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\test-results\jwt-token-security-SEC-002-1c18c-T-Token-安全测试-退出登录后应清除-Token-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.click: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for locator('text=admin')
+
+
+      65 |     await page.waitForURL('**/*', { timeout: 10000 });
+      66 |     
+    > 67 |     await page.locator('text=admin').click();
+         |                                      ^
+      68 |     await page.locator('text=退出登录').click();
+      69 |     
+      70 |     await page.waitForURL('**/login', { timeout: 10000 });
+        at D:\AI\OA\frontend\e2e\jwt-token-security.spec.ts:67:38
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\jwt-token-security-SEC-002-1c18c-T-Token-安全测试-退出登录后应清除-Token-chromium-retry1\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\test-results\jwt-token-security-SEC-002-1c18c-T-Token-安全测试-退出登录后应清除-Token-chromium-retry1\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\jwt-token-security-SEC-002-1c18c-T-Token-安全测试-退出登录后应清除-Token-chromium-retry1\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\test-results\jwt-token-security-SEC-002-1c18c-T-Token-安全测试-退出登录后应清除-Token-chromium-retry1\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\test-results\jwt-token-security-SEC-002-1c18c-T-Token-安全测试-退出登录后应清除-Token-chromium-retry1\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</error>
+</testcase>
+</testsuite>
+<testsuite name="password-security.spec.ts" timestamp="2026-04-17T00:16:42.358Z" hostname="chromium" tests="3" failures="1" skipped="0" time="28.021" errors="0">
+<testcase name="SEC-004: 初始密码安全测试 › 登录应使用密码哈希验证" classname="password-security.spec.ts" time="12.07">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|password-security-SEC-004-初始密码安全测试-登录应使用密码哈希验证-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|password-security-SEC-004-初始密码安全测试-登录应使用密码哈希验证-chromium\video.webm]]
+
+[[ATTACHMENT|password-security-SEC-004-初始密码安全测试-登录应使用密码哈希验证-chromium\error-context.md]]
+
+[[ATTACHMENT|password-security-SEC-004-初始密码安全测试-登录应使用密码哈希验证-chromium\trace.zip]]
+
+[[ATTACHMENT|password-security-SEC-004-初始密码安全测试-登录应使用密码哈希验证-chromium-retry1\test-failed-1.png]]
+
+[[ATTACHMENT|password-security-SEC-004-初始密码安全测试-登录应使用密码哈希验证-chromium-retry1\video.webm]]
+
+[[ATTACHMENT|password-security-SEC-004-初始密码安全测试-登录应使用密码哈希验证-chromium-retry1\error-context.md]]
+
+[[ATTACHMENT|password-security-SEC-004-初始密码安全测试-登录应使用密码哈希验证-chromium-retry1\trace.zip]]
+]]>
+</system-out>
+<failure message="expect(received).not.toContain(expected) // indexOf" type="expect.not.toContain">
+<![CDATA[  [chromium] › password-security.spec.ts:4:3 › SEC-004: 初始密码安全测试 › 登录应使用密码哈希验证 ─────────────────────
+
+    Error: expect(received).not.toContain(expected) // indexOf
+
+    Expected substring: not "/login"
+    Received string:        "http://localhost:5173/login"
+
+      12 |     
+      13 |     const currentUrl = page.url();
+    > 14 |     expect(currentUrl).not.toContain('/login');
+         |                            ^
+      15 |   });
+      16 |
+      17 |   test('错误密码应显示失败提示', async ({ page }) => {
+        at D:\AI\OA\frontend\e2e\password-security.spec.ts:14:28
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\password-security-SEC-004-初始密码安全测试-登录应使用密码哈希验证-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\test-results\password-security-SEC-004-初始密码安全测试-登录应使用密码哈希验证-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\password-security-SEC-004-初始密码安全测试-登录应使用密码哈希验证-chromium\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\test-results\password-security-SEC-004-初始密码安全测试-登录应使用密码哈希验证-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\test-results\password-security-SEC-004-初始密码安全测试-登录应使用密码哈希验证-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Error: expect(received).not.toContain(expected) // indexOf
+
+    Expected substring: not "/login"
+    Received string:        "http://localhost:5173/login"
+
+      12 |     
+      13 |     const currentUrl = page.url();
+    > 14 |     expect(currentUrl).not.toContain('/login');
+         |                            ^
+      15 |   });
+      16 |
+      17 |   test('错误密码应显示失败提示', async ({ page }) => {
+        at D:\AI\OA\frontend\e2e\password-security.spec.ts:14:28
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\password-security-SEC-004-初始密码安全测试-登录应使用密码哈希验证-chromium-retry1\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\test-results\password-security-SEC-004-初始密码安全测试-登录应使用密码哈希验证-chromium-retry1\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\password-security-SEC-004-初始密码安全测试-登录应使用密码哈希验证-chromium-retry1\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\test-results\password-security-SEC-004-初始密码安全测试-登录应使用密码哈希验证-chromium-retry1\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\test-results\password-security-SEC-004-初始密码安全测试-登录应使用密码哈希验证-chromium-retry1\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+</testcase>
+<testcase name="SEC-004: 初始密码安全测试 › 错误密码应显示失败提示" classname="password-security.spec.ts" time="6.966">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|password-security-SEC-004-初始密码安全测试-错误密码应显示失败提示-chromium\test-finished-1.png]]
+]]>
+</system-out>
+</testcase>
+<testcase name="SEC-004: 初始密码安全测试 › 密码字段不应出现在网络响应中" classname="password-security.spec.ts" time="8.985">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|password-security-SEC-004-初始密码安全测试-密码字段不应出现在网络响应中-chromium\test-finished-1.png]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+<testsuite name="security-config.spec.ts" timestamp="2026-04-17T00:16:42.358Z" hostname="chromium" tests="4" failures="0" skipped="0" time="48.409" errors="2">
+<testcase name="安全配置验证测试 › 应检查 .env 文件是否在版本控制中" classname="security-config.spec.ts" time="0.458">
+<system-out>
+<![CDATA[测试 .env 文件保护
+.env 文件已添加到 .gitignore
+
+[[ATTACHMENT|security-config-安全配置验证测试-应检查-env-文件是否在版本控制中-chromium\test-finished-1.png]]
+]]>
+</system-out>
+</testcase>
+<testcase name="安全配置验证测试 › 应检查密码哈希算法" classname="security-config.spec.ts" time="24.215">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|security-config-安全配置验证测试-应检查密码哈希算法-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|security-config-安全配置验证测试-应检查密码哈希算法-chromium\video.webm]]
+
+[[ATTACHMENT|security-config-安全配置验证测试-应检查密码哈希算法-chromium\error-context.md]]
+
+[[ATTACHMENT|security-config-安全配置验证测试-应检查密码哈希算法-chromium\trace.zip]]
+
+[[ATTACHMENT|security-config-安全配置验证测试-应检查密码哈希算法-chromium-retry1\test-failed-1.png]]
+
+[[ATTACHMENT|security-config-安全配置验证测试-应检查密码哈希算法-chromium-retry1\video.webm]]
+
+[[ATTACHMENT|security-config-安全配置验证测试-应检查密码哈希算法-chromium-retry1\error-context.md]]
+
+[[ATTACHMENT|security-config-安全配置验证测试-应检查密码哈希算法-chromium-retry1\trace.zip]]
+]]>
+</system-out>
+<error message="page.waitForSelector: Timeout 5000ms exceeded." type="TimeoutError">
+<![CDATA[  [chromium] › security-config.spec.ts:9:3 › 安全配置验证测试 › 应检查密码哈希算法 ──────────────────────────────────
+
+    TimeoutError: page.waitForSelector: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for locator('.ant-table-tbody') to be visible
+
+
+      15 |     
+      16 |     await page.goto('/system/user');
+    > 17 |     await page.waitForSelector('.ant-table-tbody', { timeout: 5000 });
+         |                ^
+      18 |     
+      19 |     const userRows = page.locator('.ant-table-tbody tr');
+      20 |     const rowCount = await userRows.count();
+        at D:\AI\OA\frontend\e2e\security-config.spec.ts:17:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\security-config-安全配置验证测试-应检查密码哈希算法-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\test-results\security-config-安全配置验证测试-应检查密码哈希算法-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\security-config-安全配置验证测试-应检查密码哈希算法-chromium\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\test-results\security-config-安全配置验证测试-应检查密码哈希算法-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\test-results\security-config-安全配置验证测试-应检查密码哈希算法-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    TimeoutError: page.waitForSelector: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for locator('.ant-table-tbody') to be visible
+
+
+      15 |     
+      16 |     await page.goto('/system/user');
+    > 17 |     await page.waitForSelector('.ant-table-tbody', { timeout: 5000 });
+         |                ^
+      18 |     
+      19 |     const userRows = page.locator('.ant-table-tbody tr');
+      20 |     const rowCount = await userRows.count();
+        at D:\AI\OA\frontend\e2e\security-config.spec.ts:17:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\security-config-安全配置验证测试-应检查密码哈希算法-chromium-retry1\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\test-results\security-config-安全配置验证测试-应检查密码哈希算法-chromium-retry1\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\security-config-安全配置验证测试-应检查密码哈希算法-chromium-retry1\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\test-results\security-config-安全配置验证测试-应检查密码哈希算法-chromium-retry1\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\test-results\security-config-安全配置验证测试-应检查密码哈希算法-chromium-retry1\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</error>
+</testcase>
+<testcase name="安全配置验证测试 › 登录接口应返回正确的响应格式" classname="security-config.spec.ts" time="15.303">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|security-config-安全配置验证测试-登录接口应返回正确的响应格式-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|security-config-安全配置验证测试-登录接口应返回正确的响应格式-chromium\video.webm]]
+
+[[ATTACHMENT|security-config-安全配置验证测试-登录接口应返回正确的响应格式-chromium\error-context.md]]
+
+[[ATTACHMENT|security-config-安全配置验证测试-登录接口应返回正确的响应格式-chromium\trace.zip]]
+
+[[ATTACHMENT|security-config-安全配置验证测试-登录接口应返回正确的响应格式-chromium-retry1\test-failed-1.png]]
+
+[[ATTACHMENT|security-config-安全配置验证测试-登录接口应返回正确的响应格式-chromium-retry1\video.webm]]
+
+[[ATTACHMENT|security-config-安全配置验证测试-登录接口应返回正确的响应格式-chromium-retry1\error-context.md]]
+
+[[ATTACHMENT|security-config-安全配置验证测试-登录接口应返回正确的响应格式-chromium-retry1\trace.zip]]
+]]>
+</system-out>
+<error message="Unexpected token &apos;&lt;&apos;, &quot;&lt;!DOCTYPE &quot;... is not valid JSON" type="SyntaxError">
+<![CDATA[  [chromium] › security-config.spec.ts:25:3 › 安全配置验证测试 › 登录接口应返回正确的响应格式 ────────────────────────────
+
+    SyntaxError: Unexpected token '<', "<!DOCTYPE "... is not valid JSON
+
+      32 |     
+      33 |     const loginResponse = await loginResponsePromise;
+    > 34 |     const responseBody = await loginResponse.json();
+         |                          ^
+      35 |     
+      36 |     expect(responseBody).toHaveProperty('code');
+      37 |     expect(responseBody).toHaveProperty('data');
+        at D:\AI\OA\frontend\e2e\security-config.spec.ts:34:26
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\security-config-安全配置验证测试-登录接口应返回正确的响应格式-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\test-results\security-config-安全配置验证测试-登录接口应返回正确的响应格式-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\security-config-安全配置验证测试-登录接口应返回正确的响应格式-chromium\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\test-results\security-config-安全配置验证测试-登录接口应返回正确的响应格式-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\test-results\security-config-安全配置验证测试-登录接口应返回正确的响应格式-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    SyntaxError: Unexpected token '<', "<!DOCTYPE "... is not valid JSON
+
+      32 |     
+      33 |     const loginResponse = await loginResponsePromise;
+    > 34 |     const responseBody = await loginResponse.json();
+         |                          ^
+      35 |     
+      36 |     expect(responseBody).toHaveProperty('code');
+      37 |     expect(responseBody).toHaveProperty('data');
+        at D:\AI\OA\frontend\e2e\security-config.spec.ts:34:26
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\security-config-安全配置验证测试-登录接口应返回正确的响应格式-chromium-retry1\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\test-results\security-config-安全配置验证测试-登录接口应返回正确的响应格式-chromium-retry1\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\security-config-安全配置验证测试-登录接口应返回正确的响应格式-chromium-retry1\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\test-results\security-config-安全配置验证测试-登录接口应返回正确的响应格式-chromium-retry1\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\test-results\security-config-安全配置验证测试-登录接口应返回正确的响应格式-chromium-retry1\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</error>
+</testcase>
+<testcase name="安全配置验证测试 › getUserInfo 接口不应返回密码字段" classname="security-config.spec.ts" time="8.433">
+<system-out>
+<![CDATA[getUserInfo 接口验证通过
+
+[[ATTACHMENT|security-config-安全配置验证测试-getUserInfo-接口不应返回密码字段-chromium\test-finished-1.png]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+<testsuite name="xss-protection.spec.ts" timestamp="2026-04-17T00:16:42.358Z" hostname="chromium" tests="4" failures="0" skipped="0" time="135.828" errors="4">
+<testcase name="SEC-008: XSS 跨站脚本防护测试 › 菜单搜索高亮应转义 HTML" classname="xss-protection.spec.ts" time="22.672">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|xss-protection-SEC-008-XSS-跨站脚本防护测试-菜单搜索高亮应转义-HTML-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|xss-protection-SEC-008-XSS-跨站脚本防护测试-菜单搜索高亮应转义-HTML-chromium\video.webm]]
+
+[[ATTACHMENT|xss-protection-SEC-008-XSS-跨站脚本防护测试-菜单搜索高亮应转义-HTML-chromium\error-context.md]]
+
+[[ATTACHMENT|xss-protection-SEC-008-XSS-跨站脚本防护测试-菜单搜索高亮应转义-HTML-chromium\trace.zip]]
+
+[[ATTACHMENT|xss-protection-SEC-008-XSS-跨站脚本防护测试-菜单搜索高亮应转义-HTML-chromium-retry1\test-failed-1.png]]
+
+[[ATTACHMENT|xss-protection-SEC-008-XSS-跨站脚本防护测试-菜单搜索高亮应转义-HTML-chromium-retry1\video.webm]]
+
+[[ATTACHMENT|xss-protection-SEC-008-XSS-跨站脚本防护测试-菜单搜索高亮应转义-HTML-chromium-retry1\error-context.md]]
+
+[[ATTACHMENT|xss-protection-SEC-008-XSS-跨站脚本防护测试-菜单搜索高亮应转义-HTML-chromium-retry1\trace.zip]]
+]]>
+</system-out>
+<error message="page.waitForSelector: Timeout 5000ms exceeded." type="TimeoutError">
+<![CDATA[  [chromium] › xss-protection.spec.ts:4:3 › SEC-008: XSS 跨站脚本防护测试 › 菜单搜索高亮应转义 HTML ─────────────────
+
+    TimeoutError: page.waitForSelector: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for locator('input[placeholder*="搜索"]') to be visible
+
+
+      10 |     
+      11 |     await page.goto('/system/menu');
+    > 12 |     await page.waitForSelector('input[placeholder*="搜索"]', { timeout: 5000 });
+         |                ^
+      13 |     
+      14 |     const xssPayload = '<img src=x onerror=alert("XSS")>';
+      15 |     await page.fill('input[placeholder*="搜索"]', xssPayload);
+        at D:\AI\OA\frontend\e2e\xss-protection.spec.ts:12:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\xss-protection-SEC-008-XSS-跨站脚本防护测试-菜单搜索高亮应转义-HTML-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\test-results\xss-protection-SEC-008-XSS-跨站脚本防护测试-菜单搜索高亮应转义-HTML-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\xss-protection-SEC-008-XSS-跨站脚本防护测试-菜单搜索高亮应转义-HTML-chromium\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\test-results\xss-protection-SEC-008-XSS-跨站脚本防护测试-菜单搜索高亮应转义-HTML-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\test-results\xss-protection-SEC-008-XSS-跨站脚本防护测试-菜单搜索高亮应转义-HTML-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    TimeoutError: page.waitForSelector: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for locator('input[placeholder*="搜索"]') to be visible
+
+
+      10 |     
+      11 |     await page.goto('/system/menu');
+    > 12 |     await page.waitForSelector('input[placeholder*="搜索"]', { timeout: 5000 });
+         |                ^
+      13 |     
+      14 |     const xssPayload = '<img src=x onerror=alert("XSS")>';
+      15 |     await page.fill('input[placeholder*="搜索"]', xssPayload);
+        at D:\AI\OA\frontend\e2e\xss-protection.spec.ts:12:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\xss-protection-SEC-008-XSS-跨站脚本防护测试-菜单搜索高亮应转义-HTML-chromium-retry1\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\test-results\xss-protection-SEC-008-XSS-跨站脚本防护测试-菜单搜索高亮应转义-HTML-chromium-retry1\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\xss-protection-SEC-008-XSS-跨站脚本防护测试-菜单搜索高亮应转义-HTML-chromium-retry1\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\test-results\xss-protection-SEC-008-XSS-跨站脚本防护测试-菜单搜索高亮应转义-HTML-chromium-retry1\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\test-results\xss-protection-SEC-008-XSS-跨站脚本防护测试-菜单搜索高亮应转义-HTML-chromium-retry1\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</error>
+</testcase>
+<testcase name="SEC-008: XSS 跨站脚本防护测试 › 部门搜索高亮应转义 HTML" classname="xss-protection.spec.ts" time="23.339">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|xss-protection-SEC-008-XSS-跨站脚本防护测试-部门搜索高亮应转义-HTML-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|xss-protection-SEC-008-XSS-跨站脚本防护测试-部门搜索高亮应转义-HTML-chromium\video.webm]]
+
+[[ATTACHMENT|xss-protection-SEC-008-XSS-跨站脚本防护测试-部门搜索高亮应转义-HTML-chromium\error-context.md]]
+
+[[ATTACHMENT|xss-protection-SEC-008-XSS-跨站脚本防护测试-部门搜索高亮应转义-HTML-chromium\trace.zip]]
+
+[[ATTACHMENT|xss-protection-SEC-008-XSS-跨站脚本防护测试-部门搜索高亮应转义-HTML-chromium-retry1\test-failed-1.png]]
+
+[[ATTACHMENT|xss-protection-SEC-008-XSS-跨站脚本防护测试-部门搜索高亮应转义-HTML-chromium-retry1\video.webm]]
+
+[[ATTACHMENT|xss-protection-SEC-008-XSS-跨站脚本防护测试-部门搜索高亮应转义-HTML-chromium-retry1\error-context.md]]
+
+[[ATTACHMENT|xss-protection-SEC-008-XSS-跨站脚本防护测试-部门搜索高亮应转义-HTML-chromium-retry1\trace.zip]]
+]]>
+</system-out>
+<error message="page.waitForSelector: Timeout 5000ms exceeded." type="TimeoutError">
+<![CDATA[  [chromium] › xss-protection.spec.ts:29:3 › SEC-008: XSS 跨站脚本防护测试 › 部门搜索高亮应转义 HTML ────────────────
+
+    TimeoutError: page.waitForSelector: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for locator('input[placeholder*="搜索"]') to be visible
+
+
+      35 |     
+      36 |     await page.goto('/system/department');
+    > 37 |     await page.waitForSelector('input[placeholder*="搜索"]', { timeout: 5000 });
+         |                ^
+      38 |     
+      39 |     const xssPayload = '<script>alert("XSS")</script>';
+      40 |     await page.fill('input[placeholder*="搜索"]', xssPayload);
+        at D:\AI\OA\frontend\e2e\xss-protection.spec.ts:37:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\xss-protection-SEC-008-XSS-跨站脚本防护测试-部门搜索高亮应转义-HTML-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\test-results\xss-protection-SEC-008-XSS-跨站脚本防护测试-部门搜索高亮应转义-HTML-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\xss-protection-SEC-008-XSS-跨站脚本防护测试-部门搜索高亮应转义-HTML-chromium\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\test-results\xss-protection-SEC-008-XSS-跨站脚本防护测试-部门搜索高亮应转义-HTML-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\test-results\xss-protection-SEC-008-XSS-跨站脚本防护测试-部门搜索高亮应转义-HTML-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    TimeoutError: page.waitForSelector: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for locator('input[placeholder*="搜索"]') to be visible
+
+
+      35 |     
+      36 |     await page.goto('/system/department');
+    > 37 |     await page.waitForSelector('input[placeholder*="搜索"]', { timeout: 5000 });
+         |                ^
+      38 |     
+      39 |     const xssPayload = '<script>alert("XSS")</script>';
+      40 |     await page.fill('input[placeholder*="搜索"]', xssPayload);
+        at D:\AI\OA\frontend\e2e\xss-protection.spec.ts:37:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\xss-protection-SEC-008-XSS-跨站脚本防护测试-部门搜索高亮应转义-HTML-chromium-retry1\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\test-results\xss-protection-SEC-008-XSS-跨站脚本防护测试-部门搜索高亮应转义-HTML-chromium-retry1\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\xss-protection-SEC-008-XSS-跨站脚本防护测试-部门搜索高亮应转义-HTML-chromium-retry1\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\test-results\xss-protection-SEC-008-XSS-跨站脚本防护测试-部门搜索高亮应转义-HTML-chromium-retry1\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\test-results\xss-protection-SEC-008-XSS-跨站脚本防护测试-部门搜索高亮应转义-HTML-chromium-retry1\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</error>
+</testcase>
+<testcase name="SEC-008: XSS 跨站脚本防护测试 › Modal 内容应安全渲染" classname="xss-protection.spec.ts" time="25.297">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|xss-protection-SEC-008-XSS-跨站脚本防护测试-Modal-内容应安全渲染-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|xss-protection-SEC-008-XSS-跨站脚本防护测试-Modal-内容应安全渲染-chromium\video.webm]]
+
+[[ATTACHMENT|xss-protection-SEC-008-XSS-跨站脚本防护测试-Modal-内容应安全渲染-chromium\error-context.md]]
+
+[[ATTACHMENT|xss-protection-SEC-008-XSS-跨站脚本防护测试-Modal-内容应安全渲染-chromium\trace.zip]]
+
+[[ATTACHMENT|xss-protection-SEC-008-XSS-跨站脚本防护测试-Modal-内容应安全渲染-chromium-retry1\test-failed-1.png]]
+
+[[ATTACHMENT|xss-protection-SEC-008-XSS-跨站脚本防护测试-Modal-内容应安全渲染-chromium-retry1\video.webm]]
+
+[[ATTACHMENT|xss-protection-SEC-008-XSS-跨站脚本防护测试-Modal-内容应安全渲染-chromium-retry1\error-context.md]]
+
+[[ATTACHMENT|xss-protection-SEC-008-XSS-跨站脚本防护测试-Modal-内容应安全渲染-chromium-retry1\trace.zip]]
+]]>
+</system-out>
+<error message="page.waitForSelector: Timeout 5000ms exceeded." type="TimeoutError">
+<![CDATA[  [chromium] › xss-protection.spec.ts:49:3 › SEC-008: XSS 跨站脚本防护测试 › Modal 内容应安全渲染 ─────────────────
+
+    TimeoutError: page.waitForSelector: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for locator('text=新增') to be visible
+
+
+      55 |     
+      56 |     await page.goto('/system/user');
+    > 57 |     await page.waitForSelector('text=新增', { timeout: 5000 });
+         |                ^
+      58 |     
+      59 |     await page.evaluate(() => {
+      60 |       const originalAlert = window.alert;
+        at D:\AI\OA\frontend\e2e\xss-protection.spec.ts:57:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\xss-protection-SEC-008-XSS-跨站脚本防护测试-Modal-内容应安全渲染-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\test-results\xss-protection-SEC-008-XSS-跨站脚本防护测试-Modal-内容应安全渲染-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\xss-protection-SEC-008-XSS-跨站脚本防护测试-Modal-内容应安全渲染-chromium\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\test-results\xss-protection-SEC-008-XSS-跨站脚本防护测试-Modal-内容应安全渲染-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\test-results\xss-protection-SEC-008-XSS-跨站脚本防护测试-Modal-内容应安全渲染-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    TimeoutError: page.waitForSelector: Timeout 5000ms exceeded.
+    Call log:
+      - waiting for locator('text=新增') to be visible
+
+
+      55 |     
+      56 |     await page.goto('/system/user');
+    > 57 |     await page.waitForSelector('text=新增', { timeout: 5000 });
+         |                ^
+      58 |     
+      59 |     await page.evaluate(() => {
+      60 |       const originalAlert = window.alert;
+        at D:\AI\OA\frontend\e2e\xss-protection.spec.ts:57:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\xss-protection-SEC-008-XSS-跨站脚本防护测试-Modal-内容应安全渲染-chromium-retry1\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\test-results\xss-protection-SEC-008-XSS-跨站脚本防护测试-Modal-内容应安全渲染-chromium-retry1\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\xss-protection-SEC-008-XSS-跨站脚本防护测试-Modal-内容应安全渲染-chromium-retry1\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\test-results\xss-protection-SEC-008-XSS-跨站脚本防护测试-Modal-内容应安全渲染-chromium-retry1\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\test-results\xss-protection-SEC-008-XSS-跨站脚本防护测试-Modal-内容应安全渲染-chromium-retry1\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</error>
+</testcase>
+<testcase name="SEC-008: XSS 跨站脚本防护测试 › 用户输入在显示时应被编码" classname="xss-protection.spec.ts" time="64.52">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|xss-protection-SEC-008-XSS-跨站脚本防护测试-用户输入在显示时应被编码-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|xss-protection-SEC-008-XSS-跨站脚本防护测试-用户输入在显示时应被编码-chromium\video.webm]]
+
+[[ATTACHMENT|xss-protection-SEC-008-XSS-跨站脚本防护测试-用户输入在显示时应被编码-chromium\error-context.md]]
+
+[[ATTACHMENT|xss-protection-SEC-008-XSS-跨站脚本防护测试-用户输入在显示时应被编码-chromium\trace.zip]]
+
+[[ATTACHMENT|xss-protection-SEC-008-XSS-跨站脚本防护测试-用户输入在显示时应被编码-chromium-retry1\test-failed-1.png]]
+
+[[ATTACHMENT|xss-protection-SEC-008-XSS-跨站脚本防护测试-用户输入在显示时应被编码-chromium-retry1\video.webm]]
+
+[[ATTACHMENT|xss-protection-SEC-008-XSS-跨站脚本防护测试-用户输入在显示时应被编码-chromium-retry1\error-context.md]]
+
+[[ATTACHMENT|xss-protection-SEC-008-XSS-跨站脚本防护测试-用户输入在显示时应被编码-chromium-retry1\trace.zip]]
+]]>
+</system-out>
+<error message="Test timeout of 30000ms exceeded." type="Error">
+<![CDATA[  [chromium] › xss-protection.spec.ts:74:3 › SEC-008: XSS 跨站脚本防护测试 › 用户输入在显示时应被编码 ──────────────────
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.click: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for locator('text=新增')
+
+
+      82 |     
+      83 |     await page.goto('/system/dict');
+    > 84 |     await page.locator('text=新增').click();
+         |                                   ^
+      85 |     
+      86 |     await page.waitForSelector('input[placeholder*="名称"]', { timeout: 5000 });
+      87 |     await page.fill('input[placeholder*="名称"]', maliciousInput);
+        at D:\AI\OA\frontend\e2e\xss-protection.spec.ts:84:35
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\xss-protection-SEC-008-XSS-跨站脚本防护测试-用户输入在显示时应被编码-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\test-results\xss-protection-SEC-008-XSS-跨站脚本防护测试-用户输入在显示时应被编码-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\xss-protection-SEC-008-XSS-跨站脚本防护测试-用户输入在显示时应被编码-chromium\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\test-results\xss-protection-SEC-008-XSS-跨站脚本防护测试-用户输入在显示时应被编码-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\test-results\xss-protection-SEC-008-XSS-跨站脚本防护测试-用户输入在显示时应被编码-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.click: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for locator('text=新增')
+
+
+      82 |     
+      83 |     await page.goto('/system/dict');
+    > 84 |     await page.locator('text=新增').click();
+         |                                   ^
+      85 |     
+      86 |     await page.waitForSelector('input[placeholder*="名称"]', { timeout: 5000 });
+      87 |     await page.fill('input[placeholder*="名称"]', maliciousInput);
+        at D:\AI\OA\frontend\e2e\xss-protection.spec.ts:84:35
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\xss-protection-SEC-008-XSS-跨站脚本防护测试-用户输入在显示时应被编码-chromium-retry1\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\test-results\xss-protection-SEC-008-XSS-跨站脚本防护测试-用户输入在显示时应被编码-chromium-retry1\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\xss-protection-SEC-008-XSS-跨站脚本防护测试-用户输入在显示时应被编码-chromium-retry1\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\test-results\xss-protection-SEC-008-XSS-跨站脚本防护测试-用户输入在显示时应被编码-chromium-retry1\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\test-results\xss-protection-SEC-008-XSS-跨站脚本防护测试-用户输入在显示时应被编码-chromium-retry1\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</error>
+</testcase>
+</testsuite>
+</testsuites>
