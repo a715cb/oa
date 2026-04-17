@@ -43,5 +43,9 @@ tmp/
 temp/
 *.tmp
 
+# 测试输出
+playwright-report/
+test-results/
+
 # Trae配置（如果需要提交则删除此行）
 .trae/

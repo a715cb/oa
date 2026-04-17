@@ -17,8 +17,6 @@ export default defineConfig({
     trace: 'retain-on-failure',
     screenshot: 'on',
     video: 'retain-on-failure',
-    // 使用系统 Chromium 浏览器
-    channel: 'chromium',
   },
 
   projects: [
