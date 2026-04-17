@@ -32,14 +32,13 @@ const errorHandler = (error: Recordable) => {
     } else if (isNetworkError) {
       responseNotice('网络连接失败', '请检查网络连接或后端服务是否正常运行', 5);
     } else {
-      responseNotice('请求失败', error.message || '未知错误', 3);
+      responseNotice('请求失败', '系统繁忙，请稍后重试', 3);
     }
     return Promise.reject(error);
   }
 
-  const { status, config, data } = error.response;
-  const url = config?.url.split(config.baseURL)[1] || config.url;
-  const message = data?.msg || data?.message;
+  const { status, data } = error.response;
+  const message = data?.msg || data?.message || '请求失败';
   if (status === 401) {
     const currentRoute = router.currentRoute.value;
     const whiteList = ["/", "/login"];
@@ -49,7 +48,16 @@ const errorHandler = (error: Recordable) => {
     store.logout(false);
     return Promise.reject(error.response);
   } else {
-    responseNotice(message, `${status}：${url}`, 3);
+    const errorDescriptions: Record<number, string> = {
+      400: '请求参数错误',
+      403: '权限不足',
+      404: '请求的资源不存在',
+      500: '服务器内部错误',
+      502: '服务器网关错误',
+      503: '服务暂时不可用'
+    };
+    const safeMessage = errorDescriptions[status] || message;
+    responseNotice(safeMessage, undefined, 3);
   }
   return Promise.reject(error);
 };

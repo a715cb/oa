@@ -21,8 +21,6 @@
 
 
   function handleOk() {
-    console.log('=====================');
-    console.log('ok');
-    console.log('======================');
+    // 处理确认操作
   }
 </script>

@@ -162,8 +162,8 @@ const submitForm = async () => {
     } else {
       message.error(res.msg || '登录失败')
     }
-  } catch (error) {
-    console.error('登录错误:', error)
+  } catch {
+    message.error('登录失败，请稍后重试')
   } finally {
     state.loading = false
   }

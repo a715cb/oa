@@ -6,6 +6,8 @@ type UseTableFormMethodsParams = {
   state: UseTableFromState;
 };
 
-export function useTableFormMethods({ slots, state }: UseTableFormMethodsParams) {
-  console.log(slots, state);
+export function useTableFormMethods({ slots: _slots, state: _state }: UseTableFormMethodsParams) {
+  // 初始化查询筛选方法
+  void _slots;
+  void _state;
 }

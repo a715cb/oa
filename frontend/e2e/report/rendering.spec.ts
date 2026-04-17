@@ -188,7 +188,7 @@ test.describe('报告页面元素渲染完整性测试', () => {
     const images = await reportPage.page.locator('img').all();
     
     let loadedImages = 0;
-    let failedImages: string[] = [];
+    const failedImages: string[] = [];
     
     for (const img of images.slice(0, 10)) {
       const src = await img.getAttribute('src').catch(() => '');

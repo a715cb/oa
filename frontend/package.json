@@ -11,9 +11,9 @@
     "format": "prettier --write src/",
     "lint": "eslint . --fix",
     "type-check": "vue-tsc --noEmit",
-    "test:e2e": "chcp 65001 >nul && [Console]::OutputEncoding = [System.Text.Encoding]::UTF8 && npx playwright test --project=chromium",
-    "test:e2e:ui": "chcp 65001 >nul && npx playwright test --ui",
-    "test:e2e:report": "npx playwright show-report"
+    "test:e2e": "powershell -ExecutionPolicy Bypass -File scripts/run-tests.ps1",
+    "test:e2e:ui": "powershell -ExecutionPolicy Bypass -File scripts/run-tests.ps1 --UI",
+    "test:e2e:report": "powershell -ExecutionPolicy Bypass -File scripts/run-tests.ps1 --Report"
   },
   "dependencies": {
     "@ant-design/icons-vue": "^6.1.0",
