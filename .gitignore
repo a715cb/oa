@@ -46,6 +46,7 @@ temp/
 # 测试输出
 playwright-report/
 test-results/
+.e2e-results/
 
 # Trae配置（如果需要提交则删除此行）
 .trae/
