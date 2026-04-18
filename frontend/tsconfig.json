@@ -16,9 +16,11 @@
     "skipLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["src/*"],
+      "@/@types/*": ["types/*"]
     },
-    "types":["ant-design-vue/typings/global", "lodash"]
+    "types":["lodash"],
+    "typeRoots": ["./node_modules/@types", "./types"]
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts","types/**/*.d.ts","src/**/*.tsx", "src/**/*.vue"]
+  "include": ["src/**/*.ts", "src/**/*.d.ts","types/**/*.ts","types/**/*.d.ts","src/**/*.tsx", "src/**/*.vue"]
 }

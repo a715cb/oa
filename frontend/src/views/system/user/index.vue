@@ -92,6 +92,8 @@ import { getRoleAll } from "@/api/system/role";
 import { getDeptList } from "@/api/system/department";
 import userForm from "./form.vue";
 import { useLoading as useFullLoading } from "@/components/Loading";
+import { useConfirmAction } from "@/hooks/web/useConfirmAction";
+
 type CheckedType = boolean | string | number;
 const { message, createConfirm } = useMessage();
 const { loading, setLoading } = useLoading();
@@ -168,7 +170,13 @@ const recycledColumns = [
   }
 ];
 
-const state = reactive({
+import type { Role, Department } from "@/@types/system";
+
+const state = reactive<{
+  queryParams: Record<string, any>;
+  role: Role[];
+  department: Department[];
+}>({
   queryParams: {},
   role: [],
   department: []
@@ -312,62 +320,44 @@ const resetSearch = () => {
 
 //软删除用户
 const onSoftDelete = (id: string | number) => {
-  createConfirm({
+  const confirmAction = useConfirmAction({
     title: "确认要软删除该用户吗?",
-    iconType: "warning",
     content: "软删除后用户数据将保留，可在回收站中查看",
-    onOk: () => {
-      destroy(id).then((res) => {
-        if (res.code == 1) {
-          message.success("删除成功");
-          search();
-        } else {
-          message.error(res.msg);
-        }
-      });
-    }
+    iconType: "warning",
+    action: () => destroy(id),
+    successMsg: "删除成功",
+    onSuccess: () => search()
   });
+  confirmAction();
 };
 
 //硬删除用户
 const onHardDelete = (id: string | number) => {
-  createConfirm({
+  const confirmAction = useConfirmAction({
     title: "确认要永久删除该用户吗?",
-    iconType: "error",
     content: "此操作不可恢复，用户数据将被永久删除！",
-    okType: "danger",
+    iconType: "error",
     okText: "确认删除",
     cancelText: "取消",
-    onOk: () => {
-      hardDelete(id).then((res) => {
-        if (res.code == 1) {
-          message.success("删除成功");
-          search();
-        } else {
-          message.error(res.msg);
-        }
-      });
-    }
+    okType: "danger",
+    action: () => hardDelete(id),
+    successMsg: "删除成功",
+    onSuccess: () => search()
   });
+  confirmAction();
 };
 
 //恢复用户
 const onRestore = (id: string | number) => {
-  createConfirm({
+  const confirmAction = useConfirmAction({
     title: "确认要恢复该用户吗?",
-    iconType: "info",
     content: "恢复后用户可正常登录系统",
-    onOk: () => {
-      restore(id).then((res) => {
-        if (res.code == 1) {
-          message.success("恢复成功");
-          search();
-        } else {
-          message.error(res.msg);
-        }
-      });
-    }
+    iconType: "info",
+    action: () => restore(id),
+    successMsg: "恢复成功",
+    onSuccess: () => search()
   });
+  confirmAction();
 };
 
 onMounted(() => {

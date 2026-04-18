@@ -98,14 +98,4 @@ export const setRealDarkTheme = (theme: AppState["theme"]) => {
   } else {
     document.documentElement.setAttribute("data-theme", "light");
   }
-};
-
-//监听操作系统主题变更事件
-window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e)=>{
-  const { setTheme } = useAppStore(store);
-  if (e.matches) {
-    setTheme("realDark");
-  } else {
-    setTheme("light");
-  }
-})
+}

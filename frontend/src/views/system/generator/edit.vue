@@ -125,6 +125,7 @@
 <script lang="ts" setup>
 import { getDictList } from "@/api/system/dict";
 import { getMenuList } from "@/api/system/menu";
+import type { Menu } from "@/@types/system";
 import { getEdit, update, deleteFiled } from "@/api/system/generator";
 import { setFormValue } from "@/utils";
 import type { TableColumnProps } from "@/components/Table/types";
@@ -319,8 +320,15 @@ const getDictType = () => {
 const getTreeList = () => {
   getMenuList().then(res => {
     treeData.value = [];
-    const data = { value: 0, title: "顶级菜单", children: [] };
-    data.children = res.data;
+    const data = { value: 0, title: "顶级菜单", children: res.data.map((item: Menu) => ({
+      value: Number(item.id),
+      title: item.name,
+      children: item.children?.map((child: Menu) => ({
+        value: Number(child.id),
+        title: child.name,
+        children: []
+      })) || []
+    })) };
     treeData.value.push(data);
   });
 };

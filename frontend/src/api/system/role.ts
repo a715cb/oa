@@ -1,18 +1,19 @@
 import request from "@/utils/request";
+import type { Role, RoleListParams, RoleSaveParams, RoleAuthParams, RoleAuthResponse } from "@/@types/system";
 
 /**
  * 获取角色列表
  * @param params
  */
-export function getRoleList(params: Recordable) {
-  return request.get("role", { params });
+export function getRoleList(params: RoleListParams) {
+  return request.get<Role[]>("/role", { params });
 }
 
 /**
  * 获取所有角色
  */
 export function getRoleAll() {
-  return request.get("role/all");
+  return request.get<Role[]>("/role/all");
 }
 
 /**
@@ -20,26 +21,26 @@ export function getRoleAll() {
  * @param id
  */
 export function getTreeAuth(id: string) {
-  return request.get("/authAccess", { params: { id } });
+  return request.get<RoleAuthResponse>("/authAccess", { params: { id } });
 }
 
 /**
  * 保存角色权限
  * @param data
  */
-export function saveAuth(data: Recordable) {
-  return request.post("/authAccess", data);
+export function saveAuth(data: RoleAuthParams) {
+  return request.post<void>("/authAccess", data);
 }
 
 /**
  * 保存
  * @param data
  */
-export function save(data: Recordable) {
-  return request({
-    url: data.id ? `role/${data.id}` : "role",
+export function save(data: RoleSaveParams) {
+  return request<Role>({
+    url: data.id ? `/role/${data.id}` : "/role",
     method: data.id ? "put" : "post",
-    data: data
+    data
   });
 }
 
@@ -48,7 +49,7 @@ export function save(data: Recordable) {
  * @param id
  */
 export function destroy(id: string) {
-  return request.delete(`role/${id}`);
+  return request.delete(`/role/${id}`);
 }
 
 /**
@@ -56,5 +57,5 @@ export function destroy(id: string) {
  * @param id
  */
 export function getEdit(id: string) {
-  return request.get(`role/${id}/edit`);
+  return request.get<Role>(`/role/${id}/edit`);
 }

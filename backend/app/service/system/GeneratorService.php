@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace app\service\system;
 
@@ -10,8 +11,7 @@ use core\service\generator\{GenerateService as Generator};
 
 class GeneratorService extends BaseService
 {
-
-    public $fieldModel;
+    protected GenerateField $fieldModel;
 
     public function __construct(GenerateTable $model, GenerateField $fieldModel)
     {
@@ -22,18 +22,28 @@ class GeneratorService extends BaseService
 
     /**
      * 获取数据库表
+     * @param array $params
      * @return array
      */
-    public function getDatabaseTable($params)
+    public function getDatabaseTable(array $params): array
     {
-        $sql = 'SHOW TABLE STATUS WHERE 1=1 ';
+        // 使用参数绑定防止 SQL 注入
+        $whereConditions = ['1=1'];
+        $bindings = [];
+
         if (!empty($params['table_name'])) {
-            $sql .= "AND name LIKE '%" . $params['table_name'] . "%'";
+            $whereConditions[] = "name LIKE :table_name";
+            $bindings['table_name'] = '%' . $params['table_name'] . '%';
         }
         if (!empty($params['table_comment'])) {
-            $sql .= "AND comment LIKE '%" . $params['table_comment'] . "%'";
+            $whereConditions[] = "comment LIKE :table_comment";
+            $bindings['table_comment'] = '%' . $params['table_comment'] . '%';
         }
-        $result =  Db::query($sql);
+
+        $whereClause = implode(' AND ', $whereConditions);
+        $sql = 'SHOW TABLE STATUS WHERE ' . $whereClause;
+
+        $result = Db::query($sql, $bindings);
         $lists = array_map("array_change_key_case", $result);
         $page = request()->param('page/d') ?: 1;
         $pageSize = request()->param('pageSize') ?: 15;
@@ -52,7 +62,7 @@ class GeneratorService extends BaseService
      * 获取列表
      * @return array
      */
-    public function getList()
+    public function getList(): array
     {
         $data = $this->model->search()->field('id,table_name,table_comment,create_time,update_time')->order('id desc')->paginate();
         return $data;
@@ -62,10 +72,10 @@ class GeneratorService extends BaseService
     /**
      * 获取编辑的数据
      *
-     * @param  int  $id
+     * @param int $id
      * @return array
      */
-    public function edit($id)
+    public function edit(int $id): array
     {
         $data = $this->model->with(['table_column'])->find($id);
         if (is_null($data)) {
@@ -79,41 +89,42 @@ class GeneratorService extends BaseService
     /**
      * 保存
      * @param array $data
-     * @return bool
+     * @return int|bool
      */
-    public function save(array $data)
+    public function save(array $data): int|bool
     {
-        $this->startTrans();
         try {
-            foreach ($data as $item) {
-                // 添加主表基础信息
-                $item['template_type'] = 0;
-                $item['generate_type'] = 0;
-                $item['module_name'] = 'adminapi';
-                $item['class_dir'] = $this->getTableName($item['table_name']);
-                $item['create_userid'] = request()->uid();
-                $item['delete_type'] = 0;
-                $item['menu_pid'] = 0;
-                $item['menu_type'] = 0;
-                $item['menu_name'] = $item['table_comment'];
-                $result = GenerateTable::create($item);
-                //添加字段表数据
-                $this->saveFieldData($item,$result->id);
-            }            
-            $this->commit(); 
-            return $result->id;
+            $result = $this->withTransaction(function () use ($data) {
+                $lastResult = null;
+                foreach ($data as $item) {
+                    // 添加主表基础信息
+                    $item['template_type'] = 0;
+                    $item['generate_type'] = 0;
+                    $item['module_name'] = 'adminapi';
+                    $item['class_dir'] = $this->getTableName($item['table_name']);
+                    $item['create_userid'] = request()->uid();
+                    $item['delete_type'] = 0;
+                    $item['menu_pid'] = 0;
+                    $item['menu_type'] = 0;
+                    $item['menu_name'] = $item['table_comment'];
+                    $lastResult = GenerateTable::create($item);
+                    //添加字段表数据
+                    $this->saveFieldData($item, $lastResult->id);
+                }
+                return $lastResult->id;
+            }, '保存失败');
+            return $result;
         } catch (\Exception $e) {
-            $this->rollback(); 
             return false;
         }
-        return true;
     }
 
     /**
      * 获取表名
-     * @return array|string|string[]
+     * @param string $table_name
+     * @return string
      */
-    public function getTableName($table_name)
+    public function getTableName(string $table_name): string
     {
         $tablePrefix = config('database.connections.mysql.prefix');
         return str_replace($tablePrefix, '', $table_name);
@@ -122,12 +133,11 @@ class GeneratorService extends BaseService
 
     /**
      * 添加字段表数据
-     * @param int $id
      * @param array $data
-     * @return mixed
+     * @param int $table_id
      */
-    public function saveFieldData($data,$table_id){
-
+    public function saveFieldData(array $data, int $table_id): void
+    {
          // 获取当前数据表字段信息
          $column = self::getTableColumn($data['table_name']);
 
@@ -164,52 +174,47 @@ class GeneratorService extends BaseService
      * @param array $data
      * @return bool
      */
-    public function update($id, array $data)
+    public function update(int $id, array $data): bool
     {
-        $this->startTrans();
         try {
-            $this->model->updateBy($id, $data);
-            $this->fieldModel->saveAll($data['column']);
-            $this->commit(); 
+            $this->withTransaction(function () use ($id, $data): void {
+                $this->model->updateBy($id, $data);
+                $this->fieldModel->saveAll($data['column']);
+            }, '更新失败');
+            return true;
         } catch (\Exception $e) {
-            $this->rollback(); 
             return false;
         }
-        return true;
     }
 
 
     /**
      * 删除
      * @param int $id
-     * @param array $data
      * @return bool
      */
-    public function delete($id)
+    public function delete(int $id): bool
     {
-        //开启事务
-        $this->startTrans();
         try {
-            GenerateTable::destroy($id);
-            $this->fieldModel->where('table_id',$id)->delete();
-            $this->commit();  
+            $this->withTransaction(function () use ($id): void {
+                GenerateTable::destroy($id);
+                $this->fieldModel->where('table_id', $id)->delete();
+            }, '删除失败');
+            return true;
         } catch (\Exception $e) {
-            $this->rollback(); 
             return false;
         }
-        return true;
     }
 
     
     /**
      * 删除字段
      * @param int $id
-     * @param array $data
      * @return int
      */
-    public function deleteFiled($id)
+    public function deleteFiled(int $id): int
     {
-        return $this->fieldModel->where('id',$id)->delete();
+        return $this->fieldModel->where('id', $id)->delete();
     }
 
 
@@ -217,13 +222,17 @@ class GeneratorService extends BaseService
 
     /**
      * 获取表字段信息
-     * @param $tableName
+     * @param string $tableName
      * @return array
      */
-    public static function getTableColumn($tableName)
+    public static function getTableColumn(string $tableName): array
     {
         $tablePrefix = config('database.connections.mysql.prefix');
         $tableName = str_replace($tablePrefix, '', $tableName);
+        // 验证表名格式，防止注入
+        if (!preg_match('/^[a-zA-Z0-9_]+$/', $tableName)) {
+            throw new FailedException('无效的表名格式');
+        }
         return Db::name($tableName)->getFields();
     }
 
@@ -231,10 +240,10 @@ class GeneratorService extends BaseService
 
     /**
      * 生成代码
-     * @param $tableName
+     * @param int $id
      * @return array
      */
-    public function makeCode($id)
+    public function makeCode(int $id): array
     {
         $tableData = $this->model->with(['table_column'])->find($id)->toArray();
         $generator = app()->make(Generator::class);
@@ -256,10 +265,10 @@ class GeneratorService extends BaseService
 
     /**
      * 预览
-     * @param $params
+     * @param int $id
      * @return bool|array
      */
-    public  function preview($id)
+    public function preview(int $id): array|bool
     {
         try {
             // 获取数据表信息
@@ -275,10 +284,10 @@ class GeneratorService extends BaseService
 
     /**
      * 下载文件
-     * @param $fileName
-     * @return bool|string
+     * @param string $fileName
+     * @return string|false
      */
-    public function download(string $fileName)
+    public function download(string $fileName): string|false
     {
         $cacheFileName = cache('curd_file_name' . $fileName);
         if (empty($cacheFileName)) {

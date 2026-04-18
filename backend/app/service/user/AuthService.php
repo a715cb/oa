@@ -1,17 +1,22 @@
 <?php
+declare(strict_types=1);
 
 namespace app\service\user;
 
 use app\model\system\User;
 use app\service\user\LoginLimitService;
+use app\Request;
 use core\base\BaseService;
 use core\service\jwt\Factory;
+use core\service\jwt\JwtAuth;
 use core\exception\FailedException;
 
 class AuthService extends BaseService
 {
     // 保存用户信息
-    protected $user = null;
+    protected ?User $user = null;
+    
+    /** @var JwtAuth */
     protected $jwtAuth;
 
     public function __construct()
@@ -25,8 +30,8 @@ class AuthService extends BaseService
      *
      * @param string $username
      * @param string $password
-     * @return string
-     * @throws ValidateException
+     * @return array
+     * @throws \think\ValidateException
      */
     public function login(string $username, string $password): array
     {
@@ -80,7 +85,9 @@ class AuthService extends BaseService
     public function user(): ?User
     {
         if (is_null($this->user)) {
-            $this->user = User::where('id', request()->uid())->field('id,dept_id')->find();
+            /** @var \app\Request $request */
+            $request = request();
+            $this->user = User::where('id', $request->uid())->field('id,dept_id')->find();
         }
         return $this->user;
     }
@@ -110,7 +117,7 @@ class AuthService extends BaseService
     /**
      * 刷新令牌
      *
-     * @return string
+     * @return array
      */
     public function refreshToken(): array
     {

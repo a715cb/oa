@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace app\service\user;
 
@@ -7,11 +8,11 @@ use think\facade\Request;
 
 class LoginLimitService
 {
-    protected $cachePrefix = 'login_attempts_';
-    protected $maxAttempts = 10;
-    protected $lockoutTime = 600; // 单位为秒，即10分钟
+    protected string $cachePrefix = 'login_attempts_';
+    protected int $maxAttempts = 10;
+    protected int $lockoutTime = 600; // 单位为秒，即10分钟
 
-    public function __construct($maxAttempts = 10, $lockoutTime = 600)
+    public function __construct(int $maxAttempts = 10, int $lockoutTime = 600)
     {
         $this->maxAttempts = $maxAttempts;
         $this->lockoutTime = $lockoutTime;
@@ -23,7 +24,7 @@ class LoginLimitService
      * @param string $username 用户名
      * @return bool
      */
-    public function checkLockout($username)
+    public function checkLockout(string $username): bool
     {
         $ip = Request::ip();
         $cacheKey = $this->getCacheKey($ip, $username);
@@ -49,7 +50,7 @@ class LoginLimitService
      * @param string $cacheKey 缓存键
      * @return bool
      */
-    protected function checkLockoutByKey($cacheKey)
+    protected function checkLockoutByKey(string $cacheKey): bool
     {
         $attemptsInfo = Cache::get($cacheKey);
 
@@ -69,7 +70,7 @@ class LoginLimitService
      *
      * @param string $username 用户名
      */
-    public function recordFailedAttempt($username)
+    public function recordFailedAttempt(string $username): void
     {
         $ip = Request::ip();
         $cacheKey = $this->getCacheKey($ip, $username);
@@ -84,9 +85,8 @@ class LoginLimitService
      * SEC-015: 根据指定键记录失败尝试
      *
      * @param string $cacheKey 缓存键
-     * @return void
      */
-    protected function recordFailedAttemptByKey($cacheKey)
+    protected function recordFailedAttemptByKey(string $cacheKey): void
     {
         $attemptsInfo = Cache::get($cacheKey) ?: ['count' => 0, 'last_attempt_time' => time()];
 
@@ -101,7 +101,7 @@ class LoginLimitService
      *
      * @param string $username 用户名
      */
-    public function clearAttempts($username)
+    public function clearAttempts(string $username): void
     {
         $ip = Request::ip();
         $cacheKey = $this->getCacheKey($ip, $username);
@@ -119,7 +119,7 @@ class LoginLimitService
      * @param string $username
      * @return string
      */
-    protected function getCacheKey($ip, $username)
+    protected function getCacheKey(string $ip, string $username): string
     {
         return $this->cachePrefix . md5($ip . '_' . $username);
     }
@@ -131,7 +131,7 @@ class LoginLimitService
      * @param string $username
      * @return string
      */
-    protected function getUsernameCacheKey($username)
+    protected function getUsernameCacheKey(string $username): string
     {
         return $this->cachePrefix . 'username_' . md5($username);
     }

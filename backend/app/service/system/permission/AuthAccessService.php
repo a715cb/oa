@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace app\service\system\permission;
 
@@ -15,7 +16,7 @@ class AuthAccessService extends BaseService
      * @param string $role_id
      * @return array
      */
-    public function getList($role_id)
+    public function getList(string $role_id): array
     {
         $authNode = MenuService::getRuleAll();
         $roleRule = AuthAccess::getPermission($role_id);
@@ -29,22 +30,21 @@ class AuthAccessService extends BaseService
      * @param array $menu_ids 菜单id数组
      * @return bool
      */
-    public function save($role_id, array $menu_ids): bool
+    public function save(string $role_id, array $menu_ids): bool
     {
         try {
             $role = Role::find($role_id);
             // 开启事务
-            $this->startTrans();
-            // 删除关联的数据
-            $role->menus()->detach();
-            // 添加新关联
-            if (!empty($menu_ids)) {
-                $role->menus()->attach($menu_ids);
-            }
-            $this->commit();
+            $this->withTransaction(function () use ($role, $menu_ids): void {
+                // 删除关联的数据
+                $role->menus()->detach();
+                // 添加新关联
+                if (!empty($menu_ids)) {
+                    $role->menus()->attach($menu_ids);
+                }
+            }, '权限保存失败');
             return true;
         } catch (\Exception $e) {
-            $this->rollBack();
             return false;
         }
     }
@@ -56,7 +56,7 @@ class AuthAccessService extends BaseService
      * @param string $role_id
      * @return int
      */
-    public function create($menu_id, $role_id)
+    public function create(string $menu_id, string $role_id): int
     {
         return AuthAccess::create(['menu_id' => $menu_id, 'role_id' => $role_id]);
     }
@@ -67,8 +67,8 @@ class AuthAccessService extends BaseService
      * @param string $menu_id
      * @return bool
      */
-    public function delete($menu_id)
+    public function delete(string $menu_id): bool
     {
-        return AuthAccess::where('menu_id', $menu_id)->delete();
+        return AuthAccess::where('menu_id', $menu_id)->delete() > 0;
     }
 }

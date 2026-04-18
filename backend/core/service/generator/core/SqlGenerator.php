@@ -11,6 +11,12 @@ class SqlGenerator extends BaseGenerator
 {
 
     /**
+     * 允许的标识符字符正则（字母、数字、下划线、斜杠、冒号）
+     * 用于验证表名、字段名、class_dir 等用户输入
+     */
+    private const VALID_IDENTIFIER_PATTERN = '/^[a-zA-Z0-9_\/:]+$/';
+
+    /**
      * 危险 SQL 关键字列表
      * 用于防止恶意 SQL 注入执行
      */
@@ -43,8 +49,11 @@ class SqlGenerator extends BaseGenerator
      * @notes 替换变量
      * @return mixed|void
      */
-    public function replaceVariables()
+    public function replaceVariables(): void
     {
+        // 验证用户输入数据安全性
+        $this->validateTableData();
+
         // 需要替换的变量
         $needReplace = [
             '{MENU_TABLE}',
@@ -78,7 +87,7 @@ class SqlGenerator extends BaseGenerator
      * @notes 菜单名称
      * @return mixed
      */
-    public function getMenuNameContent()
+    public function getMenuNameContent(): mixed
     {
         return $this->tableData['menu_name'] ?? $this->tableData['table_comment'];
     }
@@ -87,19 +96,20 @@ class SqlGenerator extends BaseGenerator
 
     /**
      * @notes 组件地址
-     * @return mixed
+     * @return string
      */
-    public function getComponentName(){
+    public function getComponentName(): string
+    {
         return $this->tableData['class_dir'] . '/' .  $this->getLowerTableName() . '/index';
     }
 
 
     /**
      * @notes 权限节点
-     * @return mixed
+     * @return string
      */
-    public function getRulesName(){
-   
+    public function getRulesName(): string
+    {
         return $this->tableData['class_dir'] . ':' .  $this->getLowerTableName();
         
     }
@@ -110,7 +120,7 @@ class SqlGenerator extends BaseGenerator
      * @notes 获取上级菜单内容
      * @return int|mixed
      */
-    public function getMenuPidContent()
+    public function getMenuPidContent(): mixed
     {
         return $this->tableData['menu_pid'] ?? 0;
     }
@@ -120,7 +130,7 @@ class SqlGenerator extends BaseGenerator
      * @notes 获取菜单表内容
      * @return string
      */
-    public function getMenuTableNameContent()
+    public function getMenuTableNameContent(): string
     {
         $tablePrefix = config('database.connections.mysql.prefix');
         return $tablePrefix . 'menu';
@@ -131,12 +141,37 @@ class SqlGenerator extends BaseGenerator
      * @notes 是否构建菜单
      * @return bool
      */
-    public function isBuildMenu()
+    public function isBuildMenu(): bool
     {
         $menuType = $this->tableData['menu_type'] ?? 0;
         return $menuType == 1;
     }
 
+
+    /**
+     * 验证 tableData 中的用户输入安全性
+     * 确保表名、class_dir 等标识符符合白名单规则（字母、数字、下划线）
+     * 
+     * @throws FailedException 当输入不合法时抛出异常
+     */
+    private function validateTableData(): void
+    {
+        // 验证表名
+        if (isset($this->tableData['table_name'])) {
+            $tableName = $this->getTableName();
+            if (!preg_match('/^[a-zA-Z0-9_]+$/', $tableName)) {
+                throw new FailedException('表名格式不合法，仅允许字母、数字和下划线');
+            }
+        }
+
+        // 验证 class_dir
+        if (isset($this->tableData['class_dir'])) {
+            $classDir = (string)$this->tableData['class_dir'];
+            if (!preg_match(self::VALID_IDENTIFIER_PATTERN, $classDir)) {
+                throw new FailedException('class_dir 格式不合法，仅允许字母、数字、下划线、斜杠和冒号');
+            }
+        }
+    }
 
     /**
      * 验证 SQL 语句安全性
@@ -188,7 +223,7 @@ class SqlGenerator extends BaseGenerator
      * @return bool
      * @throws FailedException 当 SQL 验证失败时抛出异常
      */
-    public function buildMenuHandle()
+    public function buildMenuHandle(): bool
     {
         if (empty($this->content)) {
             return false;
@@ -219,9 +254,9 @@ class SqlGenerator extends BaseGenerator
 
     /**
      * @notes 获取文件生成到模块的文件夹路径
-     * @return mixed|void
+     * @return string
      */
-    public function getModuleGenerateDir()
+    public function getModuleGenerateDir(): string
     {
         $dir = $this->generatorDir . 'sql/';
         $this->checkDir($dir);
@@ -233,7 +268,7 @@ class SqlGenerator extends BaseGenerator
      * @notes 获取文件生成到runtime的文件夹路径
      * @return string
      */
-    public function getRuntimeGenerateDir()
+    public function getRuntimeGenerateDir(): string
     {
         $dir = $this->generatorDir . 'sql/';
         $this->checkDir($dir);
@@ -245,7 +280,7 @@ class SqlGenerator extends BaseGenerator
      * @notes 生成的文件名
      * @return string
      */
-    public function getGenerateName()
+    public function getGenerateName(): string
     {
         return 'menu.sql';
     }

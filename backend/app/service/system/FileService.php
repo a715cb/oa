@@ -1,14 +1,19 @@
 <?php
+declare(strict_types=1);
 
 namespace app\service\system;
 
 use core\base\BaseService;
 use core\service\upload\UploadService;
 
+/**
+ * 文件服务类
+ * Class FileService
+ * @package app\service\system
+ */
 class FileService extends BaseService
 {
-
-    private $upload;
+    private UploadService $upload;
 
     public function __construct(UploadService $upload)
     {
@@ -16,35 +21,32 @@ class FileService extends BaseService
     }
 
     /**
-     * 上传
-     *
-     * @return \think\Response
+     * 上传文件
+     * @param mixed $file 文件对象
+     * @return mixed
      */
-    public function uploadFile($file)
+    public function uploadFile(mixed $file): mixed
     {
         return $this->upload->checkFiles()->upload($file);
     }
 
-
     /**
      * 上传图片
-     *
-     * @return \think\Response
+     * @param mixed $file 图片文件
+     * @return mixed
      */
-    public function uploadImg($file)
+    public function uploadImg(mixed $file): mixed
     {
         return $this->upload->checkImages()->upload($file);
     }
 
-
     /**
      * 上传附件
-     *
-     * @return \think\Response
+     * @param mixed $file 附件文件
+     * @return mixed
      */
-    public function uploadAttachment($file)
+    public function uploadAttachment(mixed $file): mixed
     {
         return $this->upload->checkAttachment()->upload($file);
     }
-
 }

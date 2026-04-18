@@ -57,21 +57,25 @@ import { basicProps } from "./props";
 import { useFullScreen } from "./hooks/useModalFullScreen";
 import { omit } from "lodash-es";
 import { useWidgetSlots } from "@/hooks/useWidgetSlots";
+import type { ComponentPublicInstance } from "vue";
+
+// 定义 Emit 事件类型
+interface ModalEmits {
+  (e: "visible-change", visible: boolean): void;
+  (e: "height-change", height: string): void;
+  (e: "cancel", event: Event): void;
+  (e: "ok", event: Event): void;
+  (e: "register", methods: ModalMethods, uid: number): void;
+  (e: "update:visible", visible: boolean): void;
+}
 
 const props = defineProps(basicProps);
-const emit = defineEmits([
-  "visible-change",
-  "height-change",
-  "cancel",
-  "ok",
-  "register",
-  "update:visible"
-]);
+const emit = defineEmits<ModalEmits>();
 defineOptions({ inheritAttrs: false });
 
 const visibleRef = ref(false);
 const propsRef = ref<Partial<ModalProps> | null>(null);
-const modalWrapperRef = ref<any>(null);
+const modalWrapperRef = ref<ComponentPublicInstance | null>(null);
 const prefixCls = "basic-modal";
 const extHeightRef = ref(0);
 
@@ -97,9 +101,10 @@ if (instance) {
 }
 
 const getMergeProps = computed((): Recordable => {
+  const currentProps = unref(propsRef) as Recordable | null;
   return {
     ...props,
-    ...(unref(propsRef) as any)
+    ...(currentProps || {})
   };
 });
 
@@ -179,7 +184,8 @@ async function handleCancel(e: Event) {
 }
 
 function setModalProps(props: Partial<ModalProps>): void {
-  propsRef.value = deepMerge(unref(propsRef) || ({} as any), props);
+  const currentProps = unref(propsRef) as Recordable || {};
+  propsRef.value = deepMerge(currentProps, props) as Partial<ModalProps>;
   if (Reflect.has(props, "visible")) {
     visibleRef.value = !!props.visible;
   }

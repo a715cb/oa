@@ -59,7 +59,7 @@
 import { ref, h } from "vue";
 import { SearchOutlined } from "@ant-design/icons-vue";
 import { getMenuList, destroy } from "@/api/system/menu";
-import menuForm from "./from.vue";
+import menuForm from "./form.vue";
 import { treeEach } from "@/utils";
 import { useTreeSearch } from "./useTreeSearch";
 import type { TableColumnProps } from "@/components/Table";

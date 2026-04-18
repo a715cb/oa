@@ -47,18 +47,19 @@ export function setupRouterGuard(router: Router) {
             //设置菜单
             permissionStore.setMenus(accessRoutes);
             // 添加路由
-            accessRoutes.forEach((item:any) => {
+            accessRoutes.forEach((item: RouteRecord) => {
               //外链不加入路由
               if (httpReg(item.path)) {
                 return;
               }
-              router.addRoute(item);
+              router.addRoute(item as any);
             });
             // 路由跳转
             next({ path: to.path, replace: true, query: to.query });
-          } catch (error:any) {
+          } catch (error) {
             // 获取用户信息失败
-            if (error?.status === 401) {
+            const httpError = error as { status?: number };
+            if (httpError?.status === 401) {
               return next({ path: "/login" });
             }
             notification.error({

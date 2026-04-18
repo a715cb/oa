@@ -1,33 +1,35 @@
 <?php
+declare(strict_types=1);
+
 namespace core\traits;
-use app\model\system\{User,Role,Department};
+
+use app\model\system\{User, Role, Department};
+
 /**
- * 数据权限 
- * trait dataRangScopeTrait
+ * 数据权限
+ * trait DataRangScopeTrait
  * @package core\traits
  */
 trait DataRangScopeTrait
 {
-
-
     /**
      * 数据范围查询
      *
-     * @param string $field
+     * @param string $field 字段名
      * @return mixed
      */
-    public function dataRange($field = '')
+    public function dataRange(string $field = ''): mixed
     {
         //超级管理员角色可查看全部
         if (is_super_admin()) {
             return $this;
         }
 
-        if(empty($field)){
+        if (empty($field)) {
             return $this;
         }
 
-        $userIds =  array_unique($this->getUserIdsByPermissions());
+        $userIds = array_unique($this->getUserIdsByPermissions());
 
         if (empty($userIds)) {
             return $this;
@@ -36,14 +38,12 @@ trait DataRangScopeTrait
         return $this->whereIn($field, $userIds);
     }
 
-
-
     /**
      * 通过权限获取用户ids
      *
      * @return array
      */
-    public function getUserIdsByPermissions()
+    public function getUserIdsByPermissions(): array
     {
         $userIds = [];
 
@@ -68,8 +68,8 @@ trait DataRangScopeTrait
                     //本人数据
                     $userIds[] = $user->id;
                     break;
-                case Role::DEPARTMENT_DOWN_DATA: 
-                    // 部门及以下数据 
+                case Role::DEPARTMENT_DOWN_DATA:
+                    // 部门及以下数据
                     $departmentIds = Department::getChildrenDepartmentIds($user->dept_id);
                     $userIds = $this->getUserIdsByDepartmentId($departmentIds);
                     break;
@@ -90,17 +90,14 @@ trait DataRangScopeTrait
         return $userIds;
     }
 
-
     /**
      * 获取用户id
      *
-     * @param array $id
+     * @param array $ids 部门ID数组
      * @return array
      */
-    protected function getUserIdsByDepartmentId(array $id)
+    protected function getUserIdsByDepartmentId(array $ids): array
     {
-        return User::whereIn('dept_id', $id)->column('id');
+        return User::whereIn('dept_id', $ids)->column('id');
     }
-
-
 }

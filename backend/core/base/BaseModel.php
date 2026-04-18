@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace core\base;
 
@@ -6,24 +7,34 @@ use think\Model;
 use core\traits\{BaseModelTrait, TransTrait};
 use core\ModelCollection;
 use think\model\Collection;
-abstract class BaseModel extends Model {
+
+/**
+ * 模型基类
+ * Class BaseModel
+ * @package core\base
+ */
+abstract class BaseModel extends Model
+{
     use BaseModelTrait;
     use TransTrait;
 
-    // 开启
+    /**
+     * 开启
+     */
     public const ENABLE = 1;
-    // 禁用
+    /**
+     * 禁用
+     */
     public const DISABLE = 2;
-
 
     /**
      * 重写 collection
      *
-     * @param array|iterable $collection
+     * @param iterable $collection
      * @param string|null $resultSetType
-     * @return CatchModelCollection|mixed
+     * @return Collection
      */
-    public function toCollection(iterable $collection = [],  $resultSetType = null):Collection
+    public function toCollection(iterable $collection = [], ?string $resultSetType = null): Collection
     {
         $resultSetType = $resultSetType ?: $this->resultSetType;
 
@@ -35,7 +46,4 @@ abstract class BaseModel extends Model {
 
         return $collection;
     }
-
-
-
 }

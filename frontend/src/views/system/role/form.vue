@@ -62,7 +62,9 @@ onMounted(() => {
   getTreeData();
 });
 
-const treeData =  ref([])
+import type { Department } from "@/@types/system";
+
+const treeData = ref<Department[]>([])
 const getTreeData = async () => {
   const res = await getDeptList();
   treeData.value = res.data;

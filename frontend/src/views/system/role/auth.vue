@@ -21,6 +21,7 @@
 import { getTreeAuth, saveAuth as saveAuthApi } from "@/api/system/role";
 import { getViewportOffset } from "@/utils/domUtils";
 import { difference } from "lodash-es";
+import type { RoleAuthNode } from "@/@types/system";
 import { TreeProps, KeyType } from "@/components/Tree";
 interface TreeNode {
   id: string;
@@ -32,11 +33,11 @@ const treeRef = ref();
 const height = ref();
 const state = reactive({
   checkedKeys: [] as TreeProps["checkedKeys"], //默认选中的key
-  treeData: [], //数据源
+  treeData: [] as RoleAuthNode[], //数据源
   loading: false,
   roleid: "" as string,
   name: "",
-  checked: [],
+  checked: [] as (string | number)[],
   spinning: false,
   halfCheckedKeys: [] as KeyType[] //半选的key
 });

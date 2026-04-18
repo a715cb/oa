@@ -1,55 +1,53 @@
 <?php
+declare(strict_types=1);
 
 namespace app\adminapi\controller\system;
 
 use core\base\BaseController;
 use app\service\system\log\OperateLogService;
 
+/**
+ * 操作日志控制器
+ * Class OperateLog
+ * @package app\adminapi\controller\system
+ */
 class OperateLog extends BaseController
 {
+    private OperateLogService $service;
 
-
-    private $service;
-
-    function __construct(OperateLogService $service)
+    public function __construct(OperateLogService $service)
     {
-        parent::__construct();
+        parent::__construct(app());
         $this->service = $service;
     }
 
-
     /**
      * 列表
-     *
      * @return \think\Response
      */
-    public function index()
+    public function index(): \think\Response
     {
-        $this->success($this->service->getList());
+        return $this->success($this->service->getList());
     }
-
 
     /**
      * 删除
-     *
      * @return \think\Response
      */
-    public function delete()
+    public function delete(): \think\Response
     {
         $id = $this->request->param('id');
         $result = $this->service->delete($id);
-        $result ? $this->success('删除成功') : $this->error('删除失败');
+        return $result ? $this->success('删除成功') : $this->error('删除失败');
     }
 
-
     /**
-     * 清空登录日志
-     *
+     * 清空操作日志
      * @return \think\Response
      */
-    public function clear()
+    public function clear(): \think\Response
     {
         $this->service->clear();
-        $this->success('清空成功');
+        return $this->success('清空成功');
     }
 }

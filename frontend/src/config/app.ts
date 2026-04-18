@@ -2,6 +2,33 @@
  * 项目默认配置项
  */
 
+/**
+ * 认证白名单：无需登录即可访问的路由路径
+ */
+export const AUTH_WHITE_LIST = ["/", "/login"];
+
+/**
+ * HTTP 状态码错误描述映射
+ */
+export const HTTP_ERROR_DESCRIPTIONS: Record<number, string> = {
+  400: '请求参数错误',
+  403: '权限不足',
+  404: '请求的资源不存在',
+  401: '未授权，请重新登录',
+  500: '服务器内部错误',
+  502: '服务器网关错误',
+  503: '服务暂时不可用'
+};
+
+/**
+ * 通知提示持续时间配置（秒）
+ */
+export const NOTIFICATION_DURATION = {
+  error: 3,           // 普通错误提示持续时间
+  networkError: 5,    // 网络错误提示持续时间
+  authError: 0        // 认证错误不显示提示（由其他逻辑处理）
+} as const;
+
 export default {
   appName: "在线OA", //应用名称
   version: "1.0.0", //版本号

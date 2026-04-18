@@ -24,7 +24,7 @@ import { getUserById } from "@/api/system/user";
 import { useModal } from "@/components/Modal";
 import SSelectUserModal from "./SSelectUserModal.vue";
 import { InputProps } from "ant-design-vue";
-import { UserRecord } from "./SSelectUserModal.vue";
+import type { UserRecord } from "./SSelectUserModal.vue";
 import { Form } from "ant-design-vue";
 const formItemContext = Form.useInjectFormItemContext();
 const emit = defineEmits(["update:modelValue", "register"]);

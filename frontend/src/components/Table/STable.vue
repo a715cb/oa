@@ -55,14 +55,26 @@ import expandIcon from "./components/ExpandIcon";
 import TableHeader from "./components/TableHeader.vue";
 import type { BasicTableProps, TableActionType, SizeType } from "./types";
 import type { SearchFormType } from "../SearchForm";
-import type { ComputedRef, Slots } from "vue";
+import type { ComputedRef, Slots, CSSProperties } from "vue";
+
+// 定义 Emit 事件类型
+interface TableEmits {
+  (e: "load-success", data: Recordable[]): void;
+  (e: "load-error", error: unknown): void;
+  (e: "change", pagination: Recordable, filters: Recordable, sorter: Recordable): void;
+  (e: "register", actions: Omit<TableActionType, "handleDelete" | "handleExport">): void;
+  (e: "reset", data: Recordable): void;
+  (e: "search", data: Recordable): void;
+}
 
 const props = defineProps({
   ...basicProps,
   rootStyle: {
-    type: Object
+    type: Object as PropType<CSSProperties>
   }
 });
+
+const emit = defineEmits<TableEmits>();
 
 const renderCard = inject("renderCard", false);
 
@@ -75,17 +87,19 @@ const rootStyleRef = computed(() => {
 
 const attrs = useAttrs();
 const slots = useSlots() as Slots;
-const emit = defineEmits(["load-success", "load-error", "change", "register", "reset", "search"]);
 
 //内部的props, 用于useTable传的参数进行合并到props中
 const innerProps = ref<Partial<BasicTableProps>>();
 
 //表格ref
-const tableElRef = ref();
+const tableElRef = ref<Nullable<HTMLElement>>(null);
 //搜索表单ref
-const searchFormRef = ref();
+const searchFormRef = ref<Nullable<{
+  getFormValue: () => Recordable;
+  doSearchLayout: () => void;
+}>>(null);
 //容器的ref
-const wrapRef = ref();
+const wrapRef = ref<Nullable<HTMLElement>>(null);
 
 const getProps = computed(() => {
   return { ...props, ...unref(innerProps) } as BasicTableProps;
@@ -95,12 +109,12 @@ const setProps = (props: Partial<BasicTableProps>) => {
   innerProps.value = { ...unref(innerProps), ...props };
 };
 
-const getFormValue = () => {
-  return searchFormRef.value?.getFormValue();
+const getFormValue = <T = Recordable>(): T[] => {
+  return (searchFormRef.value?.getFormValue() ?? {}) as unknown as T[];
 };
 
-const doSearchLayout = () => {
-  return searchFormRef.value?.doSearchLayout();
+const doSearchLayout = (): void => {
+  searchFormRef.value?.doSearchLayout();
 };
 
 const { setLoading, getLoading } = useLoading(getProps);
@@ -152,7 +166,12 @@ const getExpandIcon = computed(() => {
 });
 
 //自适应表格高度
-const { getScroll, redoHeight } = useTableScroll(getProps, tableElRef, tableData, getColumns);
+const { getScroll, redoHeight } = useTableScroll(
+  getProps,
+  tableElRef as any,
+  tableData,
+  getColumns
+);
 
 //绑定的表格属性
 const getTableProps = computed(() => {
@@ -198,10 +217,10 @@ const searchFormData = computed(() => {
 //清除Slider组件的值
 const clearSliderValue = (data: Recordable) => {
   const sliderData = unref(searchFormData)?.filter(
-    (item: Recordable) => item.component == "Slider"
+    (item: SearchFormType) => item.component === "Slider"
   );
-  sliderData?.forEach((item: Recordable) => {
-    const { range } = item.props;
+  sliderData?.forEach((item: SearchFormType) => {
+    const { range } = item.props || {};
     if (range) {
       data[item.dataIndex] = [0, 0];
     } else {
@@ -210,14 +229,13 @@ const clearSliderValue = (data: Recordable) => {
   });
 };
 
-const handleTableChange = (...args: any[]) => {
-  handleChange.call(undefined, ...(args as Parameters<typeof handleChange>));
-  emit("change", ...args);
+// 表格变化处理 (pagination, filters, sorter, extra 来自 ant-design-vue Table onChange 事件)
+const handleTableChange = (pagination: Recordable, filters: Recordable, sorter: Recordable, extra?: Recordable) => {
+  handleChange(pagination, filters, sorter, extra);
+  emit("change", pagination, filters, sorter);
   // 解决通过useTable注册onChange时不起作用的问题
   const { onChange } = unref(getProps);
-  onChange &&
-    isFunction(onChange) &&
-    onChange.call(undefined, ...(args as Parameters<typeof onChange>));
+  onChange && isFunction(onChange) && onChange(pagination, filters, sorter, extra);
 };
 
 const getFormSlotKeys: ComputedRef<string[]> = computed(() => {

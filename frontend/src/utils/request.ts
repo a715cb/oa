@@ -3,6 +3,7 @@ import notification from "ant-design-vue/es/notification";
 import { getAccessToken, getRefreshToken } from "@/utils/auth";
 import { useUserStore } from "@/store/modules/user";
 import router from "@/router";
+import { AUTH_WHITE_LIST, HTTP_ERROR_DESCRIPTIONS, NOTIFICATION_DURATION } from "@/config/app";
 
 // 创建 axios 实例
 const http = axios.create({
@@ -28,11 +29,11 @@ const errorHandler = (error: Recordable) => {
     const isNetworkError = error.code === 'ERR_NETWORK' || error.code === 'ECONNABORTED' || error.message === 'Network Error';
 
     if (isCorsError) {
-      responseNotice('跨域请求被阻止', '请检查服务器 CORS 配置', 5);
+      responseNotice('跨域请求被阻止', '请检查服务器 CORS 配置', NOTIFICATION_DURATION.networkError);
     } else if (isNetworkError) {
-      responseNotice('网络连接失败', '请检查网络连接或后端服务是否正常运行', 5);
+      responseNotice('网络连接失败', '请检查网络连接或后端服务是否正常运行', NOTIFICATION_DURATION.networkError);
     } else {
-      responseNotice('请求失败', '系统繁忙，请稍后重试', 3);
+      responseNotice('请求失败', '系统繁忙，请稍后重试', NOTIFICATION_DURATION.error);
     }
     return Promise.reject(error);
   }
@@ -41,23 +42,14 @@ const errorHandler = (error: Recordable) => {
   const message = data?.msg || data?.message || '请求失败';
   if (status === 401) {
     const currentRoute = router.currentRoute.value;
-    const whiteList = ["/", "/login"];
-    if (!whiteList.includes(currentRoute.path)) {
+    if (!AUTH_WHITE_LIST.includes(currentRoute.path)) {
       responseNotice(message);
     }
     store.logout(false);
     return Promise.reject(error.response);
   } else {
-    const errorDescriptions: Record<number, string> = {
-      400: '请求参数错误',
-      403: '权限不足',
-      404: '请求的资源不存在',
-      500: '服务器内部错误',
-      502: '服务器网关错误',
-      503: '服务暂时不可用'
-    };
-    const safeMessage = errorDescriptions[status] || message;
-    responseNotice(safeMessage, undefined, 3);
+    const safeMessage = HTTP_ERROR_DESCRIPTIONS[status] || message;
+    responseNotice(safeMessage, undefined, NOTIFICATION_DURATION.error);
   }
   return Promise.reject(error);
 };

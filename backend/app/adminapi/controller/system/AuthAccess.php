@@ -1,46 +1,46 @@
 <?php
+declare(strict_types=1);
 
 namespace app\adminapi\controller\system;
 
 use core\base\BaseController;
 use app\service\system\permission\AuthAccessService;
 
+/**
+ * 权限访问控制器
+ * Class AuthAccess
+ * @package app\adminapi\controller\system
+ */
 class AuthAccess extends BaseController
 {
+    private AuthAccessService $service;
 
-    private $service;
-
-    function __construct(AuthAccessService $service)
+    public function __construct(AuthAccessService $service, \think\App $app)
     {
-        parent::__construct();
+        parent::__construct($app);
         $this->service = $service;
     }
 
-
-
     /**
      * 列表
-     * 
-     * @return  \think\Response
+     * @return \think\Response
      */
-    public function index()
+    public function index(): \think\Response
     {
-        $roleid = $this->request->param('id');
-        $data = $this->service->getList($roleid);
-        $this->success($data);
+        $roleId = $this->request->param('id');
+        $data = $this->service->getList($roleId);
+        return $this->success($data);
     }
-
 
     /**
      * 新增
-     * 
-     * @return  \think\Response
+     * @return \think\Response
      */
-    public function save()
+    public function save(): \think\Response
     {
-        $role_id = $this->request->param('role_id');
-        $menu_id = $this->request->param('menu_id');
-        $result = $this->service->save($role_id, $menu_id);
-        $this->success('权限设置成功');
+        $roleId = $this->request->param('role_id');
+        $menuId = $this->request->param('menu_id');
+        $this->service->save($roleId, $menuId);
+        return $this->success('权限设置成功');
     }
 }

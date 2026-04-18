@@ -45,16 +45,10 @@
 </template>
 <script lang="ts" setup>
 import { save, getEdit } from "@/api/system/user";
-type Option = {
-  name: string;
-  id: string;
-};
+import type { Role, Department } from "@/@types/system";
+import type { PropType } from "vue";
 
-type DepartmentOpt = {
-  title: string;
-  value: string;
-  children: DepartmentOpt[];
-};
+type RoleOption = Pick<Role, 'id' | 'name'>;
 
 const form = reactive({
   id: undefined,
@@ -69,10 +63,10 @@ const form = reactive({
 
 defineProps({
   role: {
-    type: Array as PropType<Option[]>
+    type: Array as PropType<RoleOption[]>
   },
   department: {
-    type: Array as PropType<DepartmentOpt[]>
+    type: Array as PropType<Department[]>
   }
 });
 

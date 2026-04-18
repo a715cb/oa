@@ -523,6 +523,173 @@ htmlspecialchars($data, ENT_QUOTES, 'UTF-8');
 }
 ```
 
+## 💻 PHP 代码风格指南
+
+### 1. 严格类型声明
+
+**所有 PHP 文件必须声明严格类型**，放在文件开头：
+
+```php
+<?php
+declare(strict_types=1);
+
+namespace app\service\user;
+```
+
+### 2. 类型提示与返回类型
+
+**所有方法必须使用类型提示和返回类型声明**：
+
+```php
+// ✅ 正确
+public function getUserById(int $id): array
+{
+    return $this->model->find($id)->toArray();
+}
+
+// ❌ 错误
+public function getUserById($id)
+{
+    return $this->model->find($id);
+}
+```
+
+**常用类型声明：**
+- 标量类型：`int`, `float`, `string`, `bool`
+- 复合类型：`array`, `?string`, `mixed`
+- 对象类型：类名或接口名
+- 返回类型：使用 `: void` 表示无返回值
+
+### 3. 命名规范
+
+| 类型 | 规范 | 示例 |
+|------|------|------|
+| 类名 | PascalCase | `UserService`, `BaseController` |
+| 方法名 | camelCase | `getUserInfo`, `saveRoles` |
+| 变量名 | camelCase | `$userId`, `$userData` |
+| 常量名 | UPPER_SNAKE_CASE | `DEFAULT_PASSWORD` |
+| 文件名 | PascalCase（类） | `UserService.php` |
+
+### 4. 代码结构规范
+
+**类定义结构顺序：**
+1. 属性声明（带类型提示）
+2. 构造函数
+3. 公共方法
+4. 受保护方法
+5. 私有方法
+
+```php
+class UserService extends BaseService
+{
+    // 1. 属性声明
+    protected User $model;
+    protected string $error = '';
+
+    // 2. 构造函数
+    public function __construct(User $model)
+    {
+        $this->model = $model;
+    }
+
+    // 3. 公共方法
+    public function save(array $data): bool
+    {
+        // 业务逻辑
+    }
+
+    // 4. 受保护/私有方法
+    protected function validateData(array $data): void
+    {
+        // 验证逻辑
+    }
+}
+```
+
+### 5. 注释规范
+
+**使用 PHPDoc 标准注释：**
+
+```php
+/**
+ * 根据 ID 获取用户信息
+ *
+ * 性能说明：
+ * - 使用 cache(60) 缓存结果 60 秒
+ * - 仅查询必要字段，减少数据传输量
+ *
+ * @param int $id 用户ID
+ * @return array 用户信息数组
+ * @throws FailedException 当用户不存在时抛出
+ */
+public function getUserById(int $id): array
+{
+    // 实现
+}
+```
+
+### 6. 事务管理
+
+**所有涉及多表操作的方法必须使用事务：**
+
+```php
+public function save(array $data): bool
+{
+    return $this->withTransaction(function () use ($data): void {
+        $this->model->storeBy($data);
+        $this->model->saveRoles($data['roles']);
+    });
+}
+```
+
+### 7. 错误处理
+
+**统一异常处理规范：**
+
+```php
+// ✅ 正确：使用业务异常
+throw new FailedException('用户不存在');
+
+// ✅ 正确：捕获并转换异常
+try {
+    $result = $this->model->save($data);
+} catch (\Exception $e) {
+    throw new FailedException('保存失败: ' . $e->getMessage());
+}
+
+// ❌ 错误：直接返回 false 不抛出异常
+if (!$result) {
+    return false;
+}
+```
+
+### 8. 安全检查清单
+
+- [ ] 使用 `declare(strict_types=1)`
+- [ ] 所有方法有类型提示和返回类型
+- [ ] 禁止 SQL 字符串拼接
+- [ ] 禁止硬编码敏感信息
+- [ ] 禁止使用 `eval()`, `system()` 等危险函数
+- [ ] 用户输入必须验证
+- [ ] 写操作必须使用事务
+- [ ] 敏感操作必须验证权限
+
+### 9. 代码质量检查
+
+运行代码检查脚本确保符合规范：
+
+```bash
+php scripts/check-code.php
+```
+
+检查项目包括：
+- 严格类型声明
+- 类型提示完整性
+- 代码风格一致性
+- 安全风险检测
+
+---
+
 ## 🧪 测试
 
 ### 运行测试

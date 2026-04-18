@@ -1,37 +1,38 @@
 import request from "@/utils/request";
+import type { User, UserListParams, UserSaveParams } from "@/@types/system";
 
 /**
  * 获取用户列表
  * @param params
  */
-export function getUserList(params: Recordable) {
-  return request.get("user", { params });
+export function getUserList(params: UserListParams) {
+  return request.get<User[]>("/user", { params });
 }
 
 /**
  * 获取激活的用户
  * @param params
  */
-export function getActiveUsers(params: Recordable) {
-  return request.get("user/getActiveUsers", { params });
+export function getActiveUsers(params: Record<string, any>) {
+  return request.get<User[]>("/user/getActiveUsers", { params });
 }
 
 /**
  * 根据id获取用户
  * @param id
  */
-export function getUserById(id: string | number | string[] | number[]) {
-  return request.get("user/getUserById", { params: { id } });
+export function getUserById(id: string | number | (string | number)[]) {
+  return request.get<User[]>("/user/getUserById", { params: { id } });
 }
 
 /**
  * 保存
  * @param data
  */
-export function save(data: Recordable) {
-  const url = data.id ? `user/${data.id}` : "user";
+export function save(data: UserSaveParams) {
+  const url = data.id ? `/user/${data.id}` : "/user";
   const method = data.id ? "put" : "post";
-  return request[method](url, data);
+  return request[method]<User>(url, data);
 }
 
 /**
@@ -39,7 +40,7 @@ export function save(data: Recordable) {
  * @param id
  */
 export function getEdit(id: string | number) {
-  return request.get(`user/${id}/edit`);
+  return request.get<User>(`/user/${id}/edit`);
 }
 
 /**
@@ -47,7 +48,7 @@ export function getEdit(id: string | number) {
  * @param id
  */
 export function destroy(id: string | number) {
-  return request.delete(`user/${id}`);
+  return request.delete(`/user/${id}`);
 }
 
 /**
@@ -55,7 +56,7 @@ export function destroy(id: string | number) {
  * @param id
  */
 export function hardDelete(id: string | number) {
-  return request.delete(`user/hardDelete/${id}`);
+  return request.delete(`/user/hardDelete/${id}`);
 }
 
 /**
@@ -63,7 +64,7 @@ export function hardDelete(id: string | number) {
  * @param id
  */
 export function restore(id: string | number) {
-  return request.put(`user/restore/${id}`);
+  return request.put(`/user/restore/${id}`);
 }
 
 /**
@@ -71,7 +72,7 @@ export function restore(id: string | number) {
  * @param id
  */
 export function changeStatus(id: string | number) {
-  return request.put(`user/changeStatus/${id}`);
+  return request.put(`/user/changeStatus/${id}`);
 }
 
 /**
@@ -79,21 +80,21 @@ export function changeStatus(id: string | number) {
  * @param id
  */
 export function resetPassword(id: string | number) {
-  return request.put(`user/resetPassword/${id}`);
+  return request.put(`/user/resetPassword/${id}`);
 }
 
 /**
  * 更新个人信息
  * @param data
  */
-export function updateInfo(data: Recordable) {
-  return request.put("user/updateInfo", data);
+export function updateInfo(data: UserSaveParams) {
+  return request.put("/user/updateInfo", data);
 }
 
 /**
  * 修改密码
  * @param data
  */
-export function changePassword(data: Recordable) {
-  return request.put("user/changePassword", data);
+export function changePassword(data: Record<string, any>) {
+  return request.put("/user/changePassword", data);
 }

@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace app\service\system\permission;
 
@@ -21,7 +22,7 @@ class MenuService extends BaseService
      *
      * @return array
      */
-    public function getList()
+    public function getList(): array
     {
         $data = $this->model->field('*,id as value')->append(['type_text', 'status'])->sort('asc')->select()->toTree();
         return $data;
@@ -34,7 +35,7 @@ class MenuService extends BaseService
      * @param  array $data
      * @return  int
      */
-    public function save($data)
+    public function save(array $data): int
     {
         $this->validate($data);
         $menuid = $this->model->storeBy($data);
@@ -48,11 +49,11 @@ class MenuService extends BaseService
 
     /**
      * 更新
-     * @param  string $id
+     * @param  int $id
      * @param  array $data
      * @return  bool
      */
-    public function update($id, $data)
+    public function update(int $id, array $data): bool
     {
         $this->validate($data);
         $result = $this->model->updateBy($id, $data);
@@ -63,17 +64,17 @@ class MenuService extends BaseService
 
     /**
      * 删除
-     * @param  string $id
+     * @param  int $id
      * @return  bool
      */
-    public function delete($id)
+    public function delete(int $id): bool
     {
         $children = $this->model->where('pid', $id)->find();
         if ($children) {
             throw new FailedException('删除失败,存在子菜单无法删除！');
         }
         try {
-            $this->transaction(function () use ($id) {            
+            $this->withTransaction(function () use ($id): void {            
                 //删除菜单数据
                 $this->model->deleteBy($id);
                 //删除权限关联表数据
@@ -91,7 +92,7 @@ class MenuService extends BaseService
      * 获取路由
      * @return  array
      */
-    public function getRouter()
+    public function getRouter(): array
     {
         $roleid = User::find(request()->uid())->getRolesId();
         $menuid = AuthAccess::getPermission($roleid);
@@ -104,7 +105,7 @@ class MenuService extends BaseService
      * 获取全部菜单节点数据
      * @return  array 
      */
-    public static function getRuleAll()
+    public static function getRuleAll(): array
     {   
         $map[] = ['type','<>',3];
         $node = Menu::field('id,title,pid')->where($map)->order('sort', 'asc')->select()->toTree();
@@ -114,9 +115,10 @@ class MenuService extends BaseService
 
     /**
      * 验证
+     * @param array $data
      * @throws \think\ValidateException
      */
-    public function validate($data)
+    public function validate(array $data): void
     {
         if (!isset($data['type'])) {
             throw new FailedException('菜单类型不能为空');
