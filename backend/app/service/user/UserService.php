@@ -70,6 +70,19 @@ class UserService extends BaseService
 
 
     /**
+     * 清除用户信息缓存
+     *
+     * @param int $id 用户ID
+     * @return void
+     */
+    private function clearUserInfoCache(int $id): void
+    {
+        $cacheKey = 'user_info_' . $id;
+        cache($cacheKey, null);
+    }
+
+
+    /**
      * 获取用户个人信息
      *
      * 性能优化说明：
@@ -214,6 +227,9 @@ class UserService extends BaseService
                 //关联更新角色的数据
                 $this->model->find($id)->updateRoles($data['roles']);
             });
+            
+            // 事务提交成功后清除缓存
+            $this->clearUserInfoCache($id);
             return true;
         } catch (\Exception) {
             return false;
@@ -229,7 +245,13 @@ class UserService extends BaseService
      */
     public function changeStatus(int $id, array $data = []): bool
     {
-        return $this->model->disOrEnable($id, $data);
+        $result = $this->model->disOrEnable($id, $data);
+        
+        if ($result) {
+            $this->clearUserInfoCache($id);
+        }
+        
+        return $result;
     }
 
 
@@ -241,10 +263,16 @@ class UserService extends BaseService
     public function changePassword(array $data)
     {
         // 密码修改成功后，清除必须修改密码标志
-        return $this->model->updateBy($data['id'], [
+        $result = $this->model->updateBy($data['id'], [
             'password' => $data['password'],
             'must_change_password' => false
         ]);
+        
+        if ($result) {
+            $this->clearUserInfoCache($data['id']);
+        }
+        
+        return $result;
     }
 
 
@@ -258,7 +286,13 @@ class UserService extends BaseService
      */
     public function updateInfo(int $id, array $data)
     {
-        return $this->model->updateBy($id, $data);
+        $result = $this->model->updateBy($id, $data);
+        
+        if ($result) {
+            $this->clearUserInfoCache($id);
+        }
+        
+        return $result;
     }
 
 
@@ -274,7 +308,13 @@ class UserService extends BaseService
     {
         $password = config('system.def_password');
         $result = $this->model->updateBy($id, ['password' => $password]);
-        return $result ? ['password' => $password] : false;
+        
+        if ($result) {
+            $this->clearUserInfoCache($id);
+            return ['password' => $password];
+        }
+        
+        return false;
     }
 
     /**
@@ -323,7 +363,13 @@ class UserService extends BaseService
             return true;
         };
 
-        return $this->handleUserDeletionOperation($id, 'softDelete', $deletionCallback);
+        $result = $this->handleUserDeletionOperation($id, 'softDelete', $deletionCallback);
+        
+        if ($result) {
+            $this->clearUserInfoCache($id);
+        }
+        
+        return $result;
     }
 
     /**
@@ -379,7 +425,13 @@ class UserService extends BaseService
             return true;
         };
 
-        return $this->handleUserDeletionOperation($id, 'hardDelete', $deletionCallback);
+        $result = $this->handleUserDeletionOperation($id, 'hardDelete', $deletionCallback);
+        
+        if ($result) {
+            $this->clearUserInfoCache($id);
+        }
+        
+        return $result;
     }
 
     /**
@@ -419,7 +471,13 @@ class UserService extends BaseService
             return true;
         };
 
-        return $this->handleUserDeletionOperation($id, 'restore', $deletionCallback);
+        $result = $this->handleUserDeletionOperation($id, 'restore', $deletionCallback);
+        
+        if ($result) {
+            $this->clearUserInfoCache($id);
+        }
+        
+        return $result;
     }
 
     /**
