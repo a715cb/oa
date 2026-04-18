@@ -5,8 +5,11 @@ trait UserSearch
 {
     //角色
     public function searchRolesAttr($query, $value){
-        $user_id = Role::find($value)->getUsers()->column('id');
-        $query->whereIn('id',$user_id);
+        $role = Role::find($value);
+        if ($role) {
+            $user_id = $role->getUsers()->column('id');
+            $query->whereIn('id',$user_id);
+        }
     }
     //关键词
     public function searchKeyAttr($query, $value){
@@ -21,8 +24,9 @@ trait UserSearch
     }
     //部门
     public function searchDeptidAttr($query, $value){
-
-        $query->whereIn('dept_id', Department::getChildrenDepartmentIds($value));
+        if ($value) {
+            $query->whereIn('dept_id', Department::getChildrenDepartmentIds($value));
+        }
     }
 
     //添加时间

@@ -39,9 +39,10 @@ class UserService extends BaseService
         // 根据 is_deleted 参数切换查询范围
         if ($isDeleted == 1) {
             $query = $query->onlyTrashed();
-        } else {
-            $query = $query->search();
         }
+        
+        // 应用搜索条件（正常列表和回收站都支持搜索）
+        $query = $query->search();
         
         $data = $query->withoutField('password')
             ->order('id', 'desc')
