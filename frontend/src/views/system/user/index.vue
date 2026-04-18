@@ -134,7 +134,7 @@ const normalColumns = [
   {
     title: "操作",
     dataIndex: "action",
-    fixed: "right"
+    fixed: "right" as const
   }
 ];
 
@@ -164,7 +164,7 @@ const recycledColumns = [
   {
     title: "操作",
     dataIndex: "action",
-    fixed: "right"
+    fixed: "right" as const
   }
 ];
 
