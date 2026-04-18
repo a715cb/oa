@@ -227,7 +227,10 @@ const [register, { search, getFormValue, setColumns }] = useTable({
   searchForm,
   listApi: getUserList,
   beforeFetch: (params: Recordable) => {
-    params.dept_id = unref(selectedKeys)[0];
+    const selectedKey = unref(selectedKeys)[0];
+    if (selectedKey) {
+      params.dept_id = selectedKey;
+    }
     params.is_deleted = unref(isRecycledView) ? 1 : 0;
   },
   debounceRender: false,
