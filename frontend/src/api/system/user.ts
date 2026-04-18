@@ -43,11 +43,27 @@ export function getEdit(id: string | number) {
 }
 
 /**
- * 删除
+ * 软删除用户
  * @param id
  */
 export function destroy(id: string | number) {
   return request.delete(`user/${id}`);
+}
+
+/**
+ * 硬删除用户（永久删除）
+ * @param id
+ */
+export function hardDelete(id: string | number) {
+  return request.delete(`user/hardDelete/${id}`);
+}
+
+/**
+ * 恢复已删除用户
+ * @param id
+ */
+export function restore(id: string | number) {
+  return request.put(`user/restore/${id}`);
 }
 
 /**

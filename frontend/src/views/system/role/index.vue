@@ -5,14 +5,14 @@
         <s-button type="primary" icon="plus-outlined" @click="openModal">添加</s-button>
       </template>
       <template #bodyCell="{ column, record }">
-        <template v-if="column?.dataIndex === 'action' && record.id != 1">
+        <template v-if="column?.dataIndex === 'action'">
           <router-link :to="{ path: `/system/auth/${record.id}`, query: { name: record.name } }"
             >权限</router-link
           >
           <a-divider type="vertical" />
-          <a @click="openModal(true, record.id)">修改</a>
-          <a-divider type="vertical" />
-          <s-confirm-button label="删除" title="确认要删除吗?" @confirm="handleDelete(record.id)" />
+          <a v-if="record.id != 1" @click="openModal(true, record.id)">修改</a>
+          <a-divider v-if="record.id != 1" type="vertical" />
+          <s-confirm-button v-if="record.id != 1" label="删除" title="确认要删除吗?" @confirm="handleDelete(record.id)" />
         </template>
       </template>
     </s-table>

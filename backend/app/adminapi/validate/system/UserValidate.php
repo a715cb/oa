@@ -56,7 +56,8 @@ class UserValidate extends BaseValidate
      */
     public function checkAdmin($value, $rule, $data)
     {
-        $user = User::find($value);
+        // 使用 withTrashed() 包含已软删除的用户，以便在回收站操作中正确验证
+        $user = User::withTrashed()->find($value);
         if (!$user) {
             return '用户不存在';
         }

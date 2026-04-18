@@ -76,6 +76,10 @@ Route::group(function () {
         Route::get('getUserById', 'system.user/getUserById');
         //更新用户信息
         Route::put('updateInfo', 'system.user/updateInfo');
+        //硬删除用户
+        Route::delete('hardDelete/:id', 'system.user/hardDelete');
+        //恢复已删除用户
+        Route::put('restore/:id', 'system.user/restore');
     });
 
     //角色

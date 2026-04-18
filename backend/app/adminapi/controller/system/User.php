@@ -173,8 +173,6 @@ class User extends BaseController
 
 
 
-
-
     /**
      * 获取用户信息
      * 
@@ -184,5 +182,44 @@ class User extends BaseController
     {
         $data = $this->service->getUserInfo();
         $this->success($data);
+    }
+
+    /**
+     * 软删除用户
+     * 
+     * @param  int  $id
+     * @return \think\Response
+     */
+    public function delete($id)
+    {
+        validate(UserValidate::class)->scene('checkUser')->check(['id'=>$id]);
+        $result = $this->service->softDelete((int)$id);
+        $result ? $this->success('删除成功') : $this->error('删除失败');
+    }
+
+    /**
+     * 硬删除用户
+     * 
+     * @param  int  $id
+     * @return \think\Response
+     */
+    public function hardDelete($id)
+    {
+        validate(UserValidate::class)->scene('checkUser')->check(['id'=>$id]);
+        $result = $this->service->hardDelete((int)$id);
+        $result ? $this->success('删除成功') : $this->error('删除失败');
+    }
+
+    /**
+     * 恢复已删除用户
+     * 
+     * @param  int  $id
+     * @return \think\Response
+     */
+    public function restore($id)
+    {
+        validate(UserValidate::class)->scene('checkUser')->check(['id'=>$id]);
+        $result = $this->service->restore((int)$id);
+        $result ? $this->success('恢复成功') : $this->error('恢复失败');
     }
 }

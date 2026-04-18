@@ -4,6 +4,9 @@ namespace app\service\user;
 
 use core\base\BaseService;
 use app\model\system\{User, AuthAccess, menu};
+use app\model\system\OperateLog;
+use core\exception\FailedException;
+use think\facade\Db;
 
 class UserService extends BaseService
 {
@@ -21,7 +24,20 @@ class UserService extends BaseService
      */
     public function getList()
     {
-        $data = $this->model->search()->withoutField('password')->order('id', 'desc')->with(['roles', 'department'])->paginate();
+        $isDeleted = request()->param('is_deleted', 0);
+        $query = $this->model;
+        
+        // 根据 is_deleted 参数切换查询范围
+        if ($isDeleted == 1) {
+            $query = $query->onlyTrashed();
+        } else {
+            $query = $query->search();
+        }
+        
+        $data = $query->withoutField('password')
+            ->order('id', 'desc')
+            ->with(['roles', 'department'])
+            ->paginate();
         return $data;
     }
 
@@ -63,7 +79,12 @@ class UserService extends BaseService
     private function getRules(array $roles)
     {
         $menu_id = AuthAccess::getPermission($roles);
-        $data = menu::where('type', 2)->whereIn('id', $menu_id)->sort('asc')->column('rules');
+        // 同时查询权限类型(type=2)和有rules标识的菜单类型(type=1)
+        $data = menu::whereIn('type', [1, 2])
+            ->whereIn('id', $menu_id)
+            ->where('rules', '<>', '')
+            ->sort('asc')
+            ->column('rules');
         return $data;
     }
 
@@ -194,5 +215,188 @@ class UserService extends BaseService
         $password = config('system.def_password');
         $result = $this->model->updateBy($id, ['password' => $password]);
         return $result ? ['password' => $password] : false;
+    }
+
+    /**
+     * 软删除用户
+     * @param int $id 用户ID
+     * @return bool
+     * @throws FailedException
+     */
+    public function softDelete(int $id): bool
+    {
+        $this->startTrans();
+        try {
+            $user = $this->model->with(['roles'])->findOrFail($id);
+
+            // SEC-010: 防止删除超级管理员
+            if ($user->isSuperAdmin()) {
+                throw new FailedException('超级管理员不可删除');
+            }
+
+            // 防止删除自己
+            if ($id == request()->uid()) {
+                throw new FailedException('不可删除当前登录用户');
+            }
+
+            // 软删除用户
+            $result = $user->delete();
+
+            if (!$result) {
+                throw new FailedException('删除失败');
+            }
+
+            // 记录操作日志
+            $this->recordDeleteLog($id, 'soft', $user->username);
+
+            $this->commit();
+            return true;
+        } catch (FailedException $e) {
+            $this->rollback();
+            throw $e;
+        } catch (\Exception $e) {
+            $this->rollback();
+            throw new FailedException('删除失败: ' . $e->getMessage());
+        }
+    }
+
+    /**
+     * 硬删除用户（永久删除）
+     * @param int $id 用户ID
+     * @return bool
+     * @throws FailedException
+     */
+    public function hardDelete(int $id): bool
+    {
+        $this->startTrans();
+        try {
+            // 使用 withTrashed 确保能找到已软删除的用户
+            $user = $this->model->withTrashed()->findOrFail($id);
+
+            // SEC-010: 防止删除超级管理员
+            if ($user->isSuperAdmin()) {
+                throw new FailedException('超级管理员不可删除');
+            }
+
+            // 防止删除自己
+            if ($id == request()->uid()) {
+                throw new FailedException('不可删除当前登录用户');
+            }
+
+            // 获取用户信息用于日志记录
+            $username = $user->username;
+
+            // 使用 Db::name 直接删除关联表记录，确保原子性和可靠性
+            Db::name('user_role')->where('user_id', $id)->delete();
+
+            // 物理删除用户（使用 force() 绕过软删除保护）
+            $result = $user->force()->delete();
+
+            if (!$result) {
+                throw new FailedException('删除失败');
+            }
+
+            // 记录操作日志
+            $this->recordDeleteLog($id, 'hard', $username);
+
+            $this->commit();
+            return true;
+        } catch (FailedException $e) {
+            $this->rollback();
+            throw $e;
+        } catch (\Exception $e) {
+            $this->rollback();
+            throw new FailedException('删除失败: ' . $e->getMessage());
+        }
+    }
+
+    /**
+     * 恢复已软删除的用户
+     * @param int $id 用户ID
+     * @return bool
+     * @throws FailedException
+     */
+    public function restore(int $id): bool
+    {
+        $this->startTrans();
+        try {
+            // 使用 includeTrashed() 查询已删除的用户
+            $user = $this->model->withTrashed()->findOrFail($id);
+
+            // 检查用户是否已被删除
+            if (!$user->trashed()) {
+                throw new FailedException('该用户未被删除，无需恢复');
+            }
+
+            // 恢复用户
+            $result = $user->restore();
+
+            if (!$result) {
+                throw new FailedException('恢复失败');
+            }
+
+            // 记录操作日志
+            $this->recordRestoreLog($id, $user->username);
+
+            $this->commit();
+            return true;
+        } catch (FailedException $e) {
+            $this->rollback();
+            throw $e;
+        } catch (\Exception $e) {
+            $this->rollback();
+            throw new FailedException('恢复失败: ' . $e->getMessage());
+        }
+    }
+
+    /**
+     * 记录删除操作日志
+     * @param int $userId 用户ID
+     * @param string $deleteType 删除类型 (soft/hard)
+     * @param string $username 用户名
+     */
+    private function recordDeleteLog(int $userId, string $deleteType, string $username): void
+    {
+        $typeMap = [
+            'soft' => '软删除',
+            'hard' => '硬删除'
+        ];
+
+        OperateLog::create([
+            'user_id' => request()->uid(),
+            'module' => '用户管理',
+            'method' => request()->method(),
+            'operate' => $typeMap[$deleteType] ?? '删除',
+            'route' => 'system:user:' . $deleteType . 'Delete',
+            'params' => json_encode([
+                'user_id' => $userId,
+                'username' => $username,
+                'delete_type' => $deleteType
+            ], JSON_UNESCAPED_UNICODE),
+            'create_time' => time(),
+            'ip' => get_client_ip()
+        ]);
+    }
+
+    /**
+     * 记录恢复操作日志
+     * @param int $userId 用户ID
+     * @param string $username 用户名
+     */
+    private function recordRestoreLog(int $userId, string $username): void
+    {
+        OperateLog::create([
+            'user_id' => request()->uid(),
+            'module' => '用户管理',
+            'method' => request()->method(),
+            'operate' => '恢复用户',
+            'route' => 'system:user:restore',
+            'params' => json_encode([
+                'user_id' => $userId,
+                'username' => $username
+            ], JSON_UNESCAPED_UNICODE),
+            'create_time' => time(),
+            'ip' => get_client_ip()
+        ]);
     }
 }

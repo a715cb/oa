@@ -6,11 +6,17 @@ use core\base\BaseModel;
 use app\model\system\search\UserSearch;
 use app\model\system\traits\UserRoleTrait;
 use core\facade\Util;
+use think\model\concern\SoftDelete;
+
 class User extends BaseModel
 {
 
     use UserSearch;
     use UserRoleTrait;
+    use SoftDelete;
+
+    protected $deleteTime = 'delete_time';
+    protected $defaultSoftDelete = 0;
 
     //开启自动写入时间戳
     protected $autoWriteTimestamp = true;
@@ -27,6 +33,7 @@ class User extends BaseModel
     protected $type = [
         'create_time'  =>  'timestamp:Y/m/d',
         'must_change_password' => 'boolean',
+        'is_deleted' => 'integer',
     ];
 
     // 判断是否需要修改密码
