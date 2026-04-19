@@ -48,7 +48,7 @@ class UserService extends BaseService
             ->order('id', 'desc')
             ->with(['roles', 'department'])
             ->paginate();
-        return $data;
+        return $data->toArray();
     }
 
 
@@ -116,10 +116,13 @@ class UserService extends BaseService
         $user->rules = $this->getRules($role->column('id'));
         $user->avatar = $user->avatar ?: config('system.default_avatar');
         
-        // 缓存结果 300 秒（5 分钟）
-        cache($cacheKey, $user->toArray(), 300);
+        // 转换为数组
+        $userData = $user->toArray();
         
-        return $user;
+        // 缓存结果 300 秒（5 分钟）
+        cache($cacheKey, $userData, 300);
+        
+        return $userData;
     }
 
 

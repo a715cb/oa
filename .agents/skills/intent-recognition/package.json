@@ -1,0 +1,18 @@
+{
+  "name": "intent-recognition",
+  "version": "1.0.0",
+  "description": "Natural language intent recognition module for SOLO Coder mode",
+  "main": "src/index.ts",
+  "scripts": {
+    "demo": "tsx examples/demo.ts",
+    "test": "tsx examples/demo.ts"
+  },
+  "keywords": [
+    "intent",
+    "recognition",
+    "nlp",
+    "classifier",
+    "solo-coder"
+  ],
+  "license": "MIT"
+}

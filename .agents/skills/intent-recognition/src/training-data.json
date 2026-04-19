@@ -1,0 +1,623 @@
+[
+  {
+    "text": "创建一个用户模型文件",
+    "category": "file_operation",
+    "subCategory": "create_file",
+    "action": "create",
+    "target": "用户模型文件",
+    "language": "zh",
+    "tags": ["file", "model", "create"]
+  },
+  {
+    "text": "新建一个登录页面组件",
+    "category": "feature_development",
+    "subCategory": "create_component",
+    "action": "create",
+    "target": "登录页面组件",
+    "language": "zh",
+    "tags": ["component", "page", "create"]
+  },
+  {
+    "text": "添加一个支付接口",
+    "category": "feature_development",
+    "subCategory": "create_api",
+    "action": "create",
+    "target": "支付接口",
+    "language": "zh",
+    "tags": ["api", "payment", "create"]
+  },
+  {
+    "text": "生成一个商品列表服务",
+    "category": "feature_development",
+    "subCategory": "create_service",
+    "action": "create",
+    "target": "商品列表服务",
+    "language": "zh",
+    "tags": ["service", "list", "create"]
+  },
+  {
+    "text": "读取用户配置文件",
+    "category": "file_operation",
+    "subCategory": "read_file",
+    "action": "read",
+    "target": "用户配置文件",
+    "language": "zh",
+    "tags": ["file", "config", "read"]
+  },
+  {
+    "text": "打开并查看日志文件",
+    "category": "file_operation",
+    "subCategory": "read_file",
+    "action": "read",
+    "target": "日志文件",
+    "language": "zh",
+    "tags": ["file", "log", "read"]
+  },
+  {
+    "text": "显示数据库连接配置内容",
+    "category": "file_operation",
+    "subCategory": "read_file",
+    "action": "read",
+    "target": "数据库连接配置",
+    "language": "zh",
+    "tags": ["config", "database", "read"]
+  },
+  {
+    "text": "修改用户模型的字段",
+    "category": "code_modification",
+    "subCategory": "modify_function",
+    "action": "modify",
+    "target": "用户模型字段",
+    "language": "zh",
+    "tags": ["model", "field", "modify"]
+  },
+  {
+    "text": "更新登录验证逻辑为JWT方式",
+    "category": "code_modification",
+    "subCategory": "change_logic",
+    "action": "update",
+    "target": "登录验证逻辑",
+    "language": "zh",
+    "tags": ["auth", "jwt", "modify"]
+  },
+  {
+    "text": "调整API路由配置",
+    "category": "configuration",
+    "subCategory": "update_config",
+    "action": "update",
+    "target": "API路由配置",
+    "language": "zh",
+    "tags": ["api", "route", "config"]
+  },
+  {
+    "text": "编辑订单处理函数",
+    "category": "code_modification",
+    "subCategory": "modify_function",
+    "action": "modify",
+    "target": "订单处理函数",
+    "language": "zh",
+    "tags": ["order", "function", "modify"]
+  },
+  {
+    "text": "删除废弃的用户接口",
+    "category": "file_operation",
+    "subCategory": "delete_file",
+    "action": "delete",
+    "target": "废弃的用户接口",
+    "language": "zh",
+    "tags": ["api", "user", "delete"]
+  },
+  {
+    "text": "移除不再使用的工具函数文件",
+    "category": "file_operation",
+    "subCategory": "delete_file",
+    "action": "delete",
+    "target": "工具函数文件",
+    "language": "zh",
+    "tags": ["utils", "file", "delete"]
+  },
+  {
+    "text": "清除缓存数据文件",
+    "category": "file_operation",
+    "subCategory": "delete_file",
+    "action": "delete",
+    "target": "缓存数据文件",
+    "language": "zh",
+    "tags": ["cache", "file", "delete"]
+  },
+  {
+    "text": "运行单元测试",
+    "category": "testing",
+    "subCategory": "run_test",
+    "action": "run",
+    "target": "单元测试",
+    "language": "zh",
+    "tags": ["test", "unit", "run"]
+  },
+  {
+    "text": "执行集成测试用例",
+    "category": "testing",
+    "subCategory": "run_test",
+    "action": "run",
+    "target": "集成测试用例",
+    "language": "zh",
+    "tags": ["test", "integration", "run"]
+  },
+  {
+    "text": "编写用户注册模块的测试",
+    "category": "testing",
+    "subCategory": "write_test",
+    "action": "create",
+    "target": "用户注册模块测试",
+    "language": "zh",
+    "tags": ["test", "register", "write"]
+  },
+  {
+    "text": "修复失败的测试用例",
+    "category": "testing",
+    "subCategory": "fix_test",
+    "action": "fix",
+    "target": "失败的测试用例",
+    "language": "zh",
+    "tags": ["test", "fix", "fail"]
+  },
+  {
+    "text": "检查测试覆盖率",
+    "category": "testing",
+    "subCategory": "test_coverage",
+    "action": "run",
+    "target": "测试覆盖率",
+    "language": "zh",
+    "tags": ["test", "coverage", "check"]
+  },
+  {
+    "text": "这个报错了，帮我看看",
+    "category": "debugging",
+    "subCategory": "error_analysis",
+    "action": "analyze",
+    "target": "错误信息",
+    "language": "zh",
+    "tags": ["error", "debug", "analyze"]
+  },
+  {
+    "text": "登录功能出现bug，需要排查",
+    "category": "debugging",
+    "subCategory": "bug_fix",
+    "action": "fix",
+    "target": "登录功能bug",
+    "language": "zh",
+    "tags": ["bug", "login", "fix"]
+  },
+  {
+    "text": "追踪内存泄漏问题",
+    "category": "debugging",
+    "subCategory": "trace_issue",
+    "action": "analyze",
+    "target": "内存泄漏问题",
+    "language": "zh",
+    "tags": ["memory", "leak", "trace"]
+  },
+  {
+    "text": "分析错误日志找出原因",
+    "category": "debugging",
+    "subCategory": "log_analysis",
+    "action": "analyze",
+    "target": "错误日志",
+    "language": "zh",
+    "tags": ["log", "error", "analyze"]
+  },
+  {
+    "text": "优化数据库查询性能",
+    "category": "refactoring",
+    "subCategory": "optimize_performance",
+    "action": "optimize",
+    "target": "数据库查询",
+    "language": "zh",
+    "tags": ["database", "query", "optimize"]
+  },
+  {
+    "text": "简化这个复杂的函数逻辑",
+    "category": "refactoring",
+    "subCategory": "simplify_code",
+    "action": "optimize",
+    "target": "复杂函数",
+    "language": "zh",
+    "tags": ["function", "simplify", "optimize"]
+  },
+  {
+    "text": "重构用户认证模块使用设计模式",
+    "category": "refactoring",
+    "subCategory": "update_pattern",
+    "action": "modify",
+    "target": "用户认证模块",
+    "language": "zh",
+    "tags": ["auth", "pattern", "refactor"]
+  },
+  {
+    "text": "移除重复的代码片段",
+    "category": "refactoring",
+    "subCategory": "remove_duplicate",
+    "action": "delete",
+    "target": "重复代码",
+    "language": "zh",
+    "tags": ["duplicate", "remove", "refactor"]
+  },
+  {
+    "text": "搜索所有使用axios的地方",
+    "category": "query_search",
+    "subCategory": "search_code",
+    "action": "search",
+    "target": "axios使用",
+    "language": "zh",
+    "tags": ["axios", "search", "usage"]
+  },
+  {
+    "text": "查找所有API端点定义",
+    "category": "query_search",
+    "subCategory": "search_code",
+    "action": "search",
+    "target": "API端点",
+    "language": "zh",
+    "tags": ["api", "endpoint", "search"]
+  },
+  {
+    "text": "找到所有引用UserModel的文件",
+    "category": "query_search",
+    "subCategory": "search_file",
+    "action": "search",
+    "target": "引用UserModel的文件",
+    "language": "zh",
+    "tags": ["model", "reference", "search"]
+  },
+  {
+    "text": "查询这个函数的调用位置",
+    "category": "query_search",
+    "subCategory": "find_usage",
+    "action": "search",
+    "target": "函数调用位置",
+    "language": "zh",
+    "tags": ["function", "usage", "search"]
+  },
+  {
+    "text": "构建项目并打包",
+    "category": "deployment",
+    "subCategory": "build_project",
+    "action": "build",
+    "target": "项目",
+    "language": "zh",
+    "tags": ["build", "package", "deploy"]
+  },
+  {
+    "text": "部署到生产环境",
+    "category": "deployment",
+    "subCategory": "deploy_production",
+    "action": "deploy",
+    "target": "生产环境",
+    "language": "zh",
+    "tags": ["deploy", "production", "release"]
+  },
+  {
+    "text": "发布到测试服务器",
+    "category": "deployment",
+    "subCategory": "deploy_staging",
+    "action": "deploy",
+    "target": "测试服务器",
+    "language": "zh",
+    "tags": ["deploy", "staging", "release"]
+  },
+  {
+    "text": "回滚到上一个版本",
+    "category": "deployment",
+    "subCategory": "rollback",
+    "action": "run",
+    "target": "上一个版本",
+    "language": "zh",
+    "tags": ["rollback", "version", "deploy"]
+  },
+  {
+    "text": "修改数据库连接配置",
+    "category": "configuration",
+    "subCategory": "update_config",
+    "action": "update",
+    "target": "数据库连接配置",
+    "language": "zh",
+    "tags": ["database", "config", "update"]
+  },
+  {
+    "text": "设置环境变量",
+    "category": "configuration",
+    "subCategory": "set_env",
+    "action": "configure",
+    "target": "环境变量",
+    "language": "zh",
+    "tags": ["env", "variable", "config"]
+  },
+  {
+    "text": "更新项目依赖版本",
+    "category": "configuration",
+    "subCategory": "update_dependency",
+    "action": "update",
+    "target": "项目依赖",
+    "language": "zh",
+    "tags": ["dependency", "version", "update"]
+  },
+  {
+    "text": "给这个函数写注释",
+    "category": "documentation",
+    "subCategory": "write_comment",
+    "action": "document",
+    "target": "函数",
+    "language": "zh",
+    "tags": ["comment", "function", "doc"]
+  },
+  {
+    "text": "更新README文档",
+    "category": "documentation",
+    "subCategory": "update_readme",
+    "action": "update",
+    "target": "README文档",
+    "language": "zh",
+    "tags": ["readme", "doc", "update"]
+  },
+  {
+    "text": "创建API接口文档",
+    "category": "documentation",
+    "subCategory": "update_api_doc",
+    "action": "document",
+    "target": "API接口文档",
+    "language": "zh",
+    "tags": ["api", "doc", "create"]
+  },
+  {
+    "text": "编写用户手册文档",
+    "category": "documentation",
+    "subCategory": "create_doc",
+    "action": "document",
+    "target": "用户手册",
+    "language": "zh",
+    "tags": ["manual", "doc", "create"]
+  },
+  {
+    "text": "create a user authentication API",
+    "category": "feature_development",
+    "subCategory": "create_api",
+    "action": "create",
+    "target": "user authentication API",
+    "language": "en",
+    "tags": ["api", "auth", "create"]
+  },
+  {
+    "text": "add a new component for dashboard",
+    "category": "feature_development",
+    "subCategory": "create_component",
+    "action": "create",
+    "target": "dashboard component",
+    "language": "en",
+    "tags": ["component", "dashboard", "create"]
+  },
+  {
+    "text": "run all unit tests",
+    "category": "testing",
+    "subCategory": "run_test",
+    "action": "run",
+    "target": "unit tests",
+    "language": "en",
+    "tags": ["test", "unit", "run"]
+  },
+  {
+    "text": "fix the login error",
+    "category": "debugging",
+    "subCategory": "bug_fix",
+    "action": "fix",
+    "target": "login error",
+    "language": "en",
+    "tags": ["bug", "login", "fix"]
+  },
+  {
+    "text": "optimize database query performance",
+    "category": "refactoring",
+    "subCategory": "optimize_performance",
+    "action": "optimize",
+    "target": "database query",
+    "language": "en",
+    "tags": ["database", "query", "optimize"]
+  },
+  {
+    "text": "search for all axios usage",
+    "category": "query_search",
+    "subCategory": "search_code",
+    "action": "search",
+    "target": "axios usage",
+    "language": "en",
+    "tags": ["axios", "search", "usage"]
+  },
+  {
+    "text": "deploy to production server",
+    "category": "deployment",
+    "subCategory": "deploy_production",
+    "action": "deploy",
+    "target": "production server",
+    "language": "en",
+    "tags": ["deploy", "production", "release"]
+  },
+  {
+    "text": "update database configuration",
+    "category": "configuration",
+    "subCategory": "update_config",
+    "action": "update",
+    "target": "database configuration",
+    "language": "en",
+    "tags": ["database", "config", "update"]
+  },
+  {
+    "text": "write comments for this function",
+    "category": "documentation",
+    "subCategory": "write_comment",
+    "action": "document",
+    "target": "function",
+    "language": "en",
+    "tags": ["comment", "function", "doc"]
+  },
+  {
+    "text": "delete the old user model file",
+    "category": "file_operation",
+    "subCategory": "delete_file",
+    "action": "delete",
+    "target": "old user model file",
+    "language": "en",
+    "tags": ["file", "model", "delete"]
+  },
+  {
+    "text": "修改用户模型字段，然后运行测试",
+    "category": "code_modification",
+    "subCategory": "modify_function",
+    "action": "modify",
+    "target": "用户模型字段",
+    "language": "zh",
+    "tags": ["model", "field", "modify", "compound"]
+  },
+  {
+    "text": "创建API接口并写单元测试",
+    "category": "feature_development",
+    "subCategory": "create_api",
+    "action": "create",
+    "target": "API接口",
+    "language": "zh",
+    "tags": ["api", "create", "compound", "test"]
+  },
+  {
+    "text": "重构代码后部署到测试环境",
+    "category": "refactoring",
+    "subCategory": "update_pattern",
+    "action": "modify",
+    "target": "代码",
+    "language": "zh",
+    "tags": ["refactor", "deploy", "compound"]
+  },
+  {
+    "text": "搜索bug并修复它",
+    "category": "debugging",
+    "subCategory": "bug_fix",
+    "action": "search",
+    "target": "bug",
+    "language": "zh",
+    "tags": ["bug", "search", "fix", "compound"]
+  },
+  {
+    "text": "新建订单组件，然后添加路由",
+    "category": "feature_development",
+    "subCategory": "create_component",
+    "action": "create",
+    "target": "订单组件",
+    "language": "zh",
+    "tags": ["component", "order", "create", "compound"]
+  },
+  {
+    "text": "update the API and deploy to staging",
+    "category": "code_modification",
+    "subCategory": "change_logic",
+    "action": "update",
+    "target": "API",
+    "language": "en",
+    "tags": ["api", "update", "compound", "deploy"]
+  },
+  {
+    "text": "find all error logs and fix the root cause",
+    "category": "debugging",
+    "subCategory": "log_analysis",
+    "action": "search",
+    "target": "error logs",
+    "language": "en",
+    "tags": ["log", "error", "compound", "fix"]
+  },
+  {
+    "text": "帮我优化一下这段代码的性能",
+    "category": "refactoring",
+    "subCategory": "optimize_performance",
+    "action": "optimize",
+    "target": "代码性能",
+    "language": "zh",
+    "tags": ["optimize", "performance", "code"]
+  },
+  {
+    "text": "能不能把这个函数改成异步的",
+    "category": "code_modification",
+    "subCategory": "modify_function",
+    "action": "modify",
+    "target": "函数",
+    "language": "zh",
+    "tags": ["function", "async", "modify"]
+  },
+  {
+    "text": "我想添加一个新的用户权限模块",
+    "category": "feature_development",
+    "subCategory": "add_feature",
+    "action": "create",
+    "target": "用户权限模块",
+    "language": "zh",
+    "tags": ["auth", "permission", "feature"]
+  },
+  {
+    "text": "看看这个配置文件有什么问题",
+    "category": "debugging",
+    "subCategory": "error_analysis",
+    "action": "analyze",
+    "target": "配置文件",
+    "language": "zh",
+    "tags": ["config", "error", "analyze"]
+  },
+  {
+    "text": "把所有的console.log替换为logger",
+    "category": "refactoring",
+    "subCategory": "change_logic",
+    "action": "modify",
+    "target": "console.log",
+    "language": "zh",
+    "tags": ["logger", "replace", "refactor"]
+  },
+  {
+    "text": "需要为API添加限流功能",
+    "category": "feature_development",
+    "subCategory": "add_feature",
+    "action": "create",
+    "target": "API限流功能",
+    "language": "zh",
+    "tags": ["api", "ratelimit", "feature"]
+  },
+  {
+    "text": "I want to add rate limiting to the API",
+    "category": "feature_development",
+    "subCategory": "add_feature",
+    "action": "create",
+    "target": "API rate limiting",
+    "language": "en",
+    "tags": ["api", "ratelimit", "feature"]
+  },
+  {
+    "text": "can you refactor this function to use async/await",
+    "category": "refactoring",
+    "subCategory": "simplify_code",
+    "action": "modify",
+    "target": "function",
+    "language": "en",
+    "tags": ["function", "async", "refactor"]
+  },
+  {
+    "text": "write tests for the payment service",
+    "category": "testing",
+    "subCategory": "write_test",
+    "action": "create",
+    "target": "payment service tests",
+    "language": "en",
+    "tags": ["test", "payment", "write"]
+  },
+  {
+    "text": "find all places where we use deprecated APIs",
+    "category": "query_search",
+    "subCategory": "search_code",
+    "action": "search",
+    "target": "deprecated APIs",
+    "language": "en",
+    "tags": ["api", "deprecated", "search"]
+  }
+]
